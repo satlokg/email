@@ -122,8 +122,12 @@
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="exampleInputEmail1">From</label>
+                  <label for="exampleInputEmail1">From Email</label>
                   <input type="text" name="from" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">From Name</label>
+                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
                 </div>
               </div>
 
@@ -132,7 +136,7 @@
             </div>
             <!-- ./box-body -->
             <div class="box-footer">
-              <button type="submit" class="btn btn-sm btn-success pull-right">Save</button>
+              <button type="submit" class="btn btn-sm btn-success pull-right">Send</button>
               <!-- /.row -->
             </div>
             <!-- /.box-footer -->

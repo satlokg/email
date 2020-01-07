@@ -63,6 +63,8 @@ class CampaignController extends Controller
     	Config::set('mail.username', $server->username);
     	Config::set('mail.password', $server->password);
     	Config::set('mail.encryption', $server->encryption);
+    	Config::set('mail.from.name', $r->name);
+    	Config::set('mail.from.address', $r->from);
     	}
     	  $mail= Mail::to($r->user())
 		    ->bcc($emails)
