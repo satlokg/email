@@ -47,6 +47,11 @@ class CampaignController extends Controller
     	$servers = Server::all();//dd($campaign);
         return view('user.campaign.detail', compact('campaign','servers'));
     }
+    public function campaignList(){
+    	$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);
+        return view('user.campaign.list', compact('campaigns'));
+    }
+
     public function sendEmail(Request $r){  //dd(array_values($r->mailList));
     	$campaign = Campaign::find($r->campaign_id);
     	$server = Server::find($r->servers);

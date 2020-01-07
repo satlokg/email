@@ -35,6 +35,12 @@
           </a>
         </li>
 
+        <li>
+          <a href="{{route('campaignList')}}">
+            <i class="fa fa-user"></i> <span>Campaign</span>
+          </a>
+        </li>
+
         
        
         

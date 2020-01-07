@@ -51,6 +51,8 @@ Route::get('/campaign', 'user\CampaignController@campaign')->name('campaign');
 Route::post('/campaign', 'user\CampaignController@campaignPost')->name('campaign.post');
 Route::get('/campaign-desplay/{id?}', 'user\CampaignController@campaignDesplay')->name('campaign.detail');
 Route::post('/send-email', 'user\CampaignController@sendEmail')->name('sendEmail');
+Route::get('/campaignList', 'user\CampaignController@campaignList')->name('campaignList');
+
 
 
 
