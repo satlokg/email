@@ -44,32 +44,27 @@ class HomeController extends Controller
     }
 
     public function mailListPost(Request $r){
-       //  dd($r->all());
        $this->validate($r, [
                 'file' => 'mimes:xlsx,xls',
                 'title'=>'required'
         ]);
         if($r->hasfile('file'))
          {
-            //dd(request()->file('file'));
-              // $file=$r->file('file'); 
-              // $destinationPath = public_path(Auth::user()->id.'_'.Auth::user()->name);
-              // $filepath =$destinationPath.'/'. File::sanitize($file->getClientOriginalName());
-              // $fileinfo = pathinfo(File::generateFilename($filepath));
-              // $imageName= $fileinfo['basename'];
-              // $file->move($destinationPath,$imageName);
               $list=Listing::Create([
                 'title'=>$r->title,
                 'user_id'=>Auth::user()->id
               ]);
-              //dd($destinationPath.'/'.$imageName);
-
               Excel::import(new EmailImport($list->id),request()->file('file'));
               Emaillist::whereNull('email')->delete();
               return back();
             
          }
 
+    }
+    public function listDetail($id){
+        $emails = Emaillist::where('listing_id',decrypt($id,'vipra'))->get();
+        return view('user.mailList.detail', compact('emails'));
+        //dd($email);
     }
 
     public function projectComment(Request $r)

@@ -92,7 +92,7 @@
                 @foreach(Auth::user()->listings as $key=>$list)
                 <tr>
                   <td>{{$list->title}}</td>
-                  <td><a href="#"> {{$list->emaillists->count()}}</a></td>
+                  <td><a href="{{route('listDetail',['id'=>encrypt($list->id,'vipra')])}}" target="_blank"> {{$list->emaillists->count()}}</a></td>
                   <td></td>
                 </tr>
                 @endforeach

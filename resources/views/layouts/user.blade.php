@@ -121,7 +121,7 @@
     }
   @endif
 </script>
-<script>
+<!-- <script>
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
@@ -129,7 +129,7 @@
       increaseArea: '20%' /* optional */
     });
   });
-</script>
+</script> -->
 <script>
     $(function(){
       

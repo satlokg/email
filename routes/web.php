@@ -40,11 +40,15 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('messages', 'ChatsController@sendMessage');
-//chat
 
+//mail
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mail-list', 'HomeController@mailList')->name('mailList');
 Route::post('/mail-list', 'HomeController@mailListPost')->name('mailList.post');
+Route::get('/list-detail/{id?}', 'HomeController@listDetail')->name('listDetail');
+Route::get('/mail-delete/{id?}', 'HomeController@listDetail')->name('email.delete');
+Route::get('/mail-edit/{id?}', 'HomeController@listDetail')->name('email.edit');
+Route::get('/mail-block/{id?}', 'HomeController@listDetail')->name('email.block');
 
 //campaign
 Route::get('/campaign', 'user\CampaignController@campaign')->name('campaign');
