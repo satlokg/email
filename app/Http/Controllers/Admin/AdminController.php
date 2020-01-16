@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Server;
 use App\Models\Seserver;
+use Auth;
 
 class AdminController extends Controller
 {
