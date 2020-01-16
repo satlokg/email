@@ -5,6 +5,6 @@
 </head>
 <body>
  
- <b><a href="{{route('unsubscribe',['email'=>$emaile])}}">Thank You</a></b>
+ <b><a href="{{route('unsubscribe',['email'=>$email])}}">Thank You</a></b>
 </body>
 </html>
