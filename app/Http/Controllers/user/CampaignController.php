@@ -55,7 +55,7 @@ class CampaignController extends Controller
     public function sendEmail(Request $r){  //dd(array_values($r->mailList));
     	$campaign = Campaign::find($r->campaign_id);
     	$server = Server::find($r->servers);
-    	$emails = Emaillist::whereIn('listing_id',$r->mailList)->get()->toArray();
+    	$emails = Emaillist::whereIn('listing_id',$r->mailList)->get();
     	if($server){
             if($server->driver == 'smtp'){
             	Config::set('mail.driver', $server->driver); 
