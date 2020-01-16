@@ -73,13 +73,12 @@ class CampaignController extends Controller
                 Config::set('services.ses.region', $server->driver); 
                 }
         }
-        if($emails){
-            foreach ($emails as $key => $value) {
+
+    	   if($emails){
+            foreach ($emails as $key => $value) { dd($value);
                 $mail= Mail::to($value)
                 ->send(new EndEmail($campaign));
             }
-        }
-    	  
         //dd($mail);
         if($campaign){
             $notification = array(
