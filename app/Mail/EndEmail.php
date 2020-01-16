@@ -18,7 +18,8 @@ class EndEmail extends Mailable
      * @return void
      */
     public $campaign;
-    public function __construct(Campaign $campaign)
+    public $emaile;
+    public function __construct(Campaign $campaign,$emaile)
     {
         $this->campaign = $campaign;
     }
@@ -30,6 +31,6 @@ class EndEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.sendemail',compact('campaign'))->subject($this->campaign->subject);
+        return $this->view('emails.sendemail',compact('campaign','emaile'))->subject($this->campaign->subject);
     }
 }

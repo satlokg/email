@@ -5,5 +5,6 @@
 </head>
 <body>
  {!!$campaign->templates!!}
+ <b><a href="{{route('unsubscribe',['email'=>$emaile])}}">Unsubscribe</a></b>
 </body>
 </html>
