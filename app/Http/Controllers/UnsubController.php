@@ -9,9 +9,9 @@ class UnsubController extends Controller
     public function index($email){
     	$res=Emaillist::where('email',$email)->update(['status'=>0]);
     	if($res){
-    		$msg="Success"
+    		$msg="Success";
     	}else{
-    		$msg="Error"
+    		$msg="Error";
     	}
     	 return view('unsub', compact('msg'));
     }
