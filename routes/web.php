@@ -40,7 +40,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('messages', 'ChatsController@sendMessage');
-Route::get('/unsubscribe/{email?}', 'HomeController@unsubscribe')->name('unsubscribe');
+Route::get('/unsubscribe/{email?}', 'UnsubController@unsubscribe')->name('unsubscribe');
 
 //mail
 Route::get('/home', 'HomeController@index')->name('home');
