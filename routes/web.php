@@ -69,6 +69,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard', 'Admin\AdminController@dashboard')->name('admin.dashboard');
     Route::get('/mail-server', 'Admin\AdminController@mailserver')->name('admin.mailserver');
     Route::post('/mail-server', 'Admin\AdminController@mailserverPost')->name('admin.mailserver.post');
+    Route::get('/ses-server', 'Admin\AdminController@sesserver')->name('admin.sesserver');
+    Route::post('/ses-server', 'Admin\AdminController@sesserverPost')->name('admin.sesserver.post');
 
    
 

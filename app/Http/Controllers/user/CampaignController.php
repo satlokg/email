@@ -57,19 +57,26 @@ class CampaignController extends Controller
     	$server = Server::find($r->servers);
     	$emails = Emaillist::whereIn('listing_id',$r->mailList)->get()->toArray();
     	if($server){
-    	Config::set('mail.driver', $server->driver); 
-    	Config::set('mail.host', $server->hostname);
-    	Config::set('mail.port', $server->port);
-    	Config::set('mail.username', $server->username);
-    	Config::set('mail.password', $server->password);
-    	Config::set('mail.encryption', $server->encryption);
-    	Config::set('mail.from.name', $r->name);
-    	Config::set('mail.from.address', $r->from);
-    	}
-    	  $mail= Mail::to($r->user())
+            if($server->driver == 'smtp'){
+            	Config::set('mail.driver', $server->driver); 
+            	Config::set('mail.host', $server->hostname);
+            	Config::set('mail.port', $server->port);
+            	Config::set('mail.username', $server->username);
+            	Config::set('mail.password', $server->password);
+            	Config::set('mail.encryption', $server->encryption);
+            	Config::set('mail.from.name', $r->name);
+            	Config::set('mail.from.address', $r->from);
+            }
+            if($server->driver == 'ses'){
+                Config::set('services.ses.key', $server->driver); 
+                Config::set('services.ses.secret', $server->driver); 
+                Config::set('services.ses.region', $server->driver); 
+                }
+        }
+    	  $mail= Mail::to($emails->first())
 		    ->bcc($emails)
 		    ->send(new EndEmail($campaign));
-        dd($mail);
+        //dd($mail);
         if($campaign){
             $notification = array(
                         'message' => 'Email Send', 

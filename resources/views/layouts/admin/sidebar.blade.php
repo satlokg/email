@@ -28,7 +28,11 @@
             <i class="fa fa-user"></i> <span>Create Mail Server</span>
           </a>
         </li>
-        
+        <li>
+          <a href="{{route('admin.sesserver')}}">
+            <i class="fa fa-user"></i> <span>Create Ses Server</span>
+          </a>
+        </li>
        
        
        
