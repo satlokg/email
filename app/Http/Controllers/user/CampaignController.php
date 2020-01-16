@@ -75,7 +75,7 @@ class CampaignController extends Controller
         }
 
     	   if($emails){
-            foreach ($emails as $key => $value) { dd($value);
+            foreach ($emails as $key => $value) { //dd($value);
                 $mail= Mail::to($value)
                 ->send(new EndEmail($campaign));
                     }
