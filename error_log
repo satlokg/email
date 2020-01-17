@@ -1,0 +1,1 @@
+[17-Jan-2020 11:04:34 Asia/Kolkata] PHP Fatal error:  Cannot declare class CreateJobsTable, because the name is already in use in /home/tiavik/public_html/email/database/migrations/2020_01_17_110322_create_jobs_table.php on line 36
