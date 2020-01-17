@@ -65,18 +65,20 @@
               <table class="table table-bordered table-striped">
                 <thead>
                 <tr class="bg-yellow">
-                  <th></th>
-                  <th>Title</th>
-                  <th>Total Mail Id</th>
+                  <th>Campaign Title</th>
+                  <th>Mail List</th>
+                  <th>Mail Success</th>
+                  <th>Mail Failed</th>
                   
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($res as $key=>$list)
                 <tr>
-                  <td><input type="checkbox" name="mailList[]" value="{{$list->id}}"></td>
                   <td></td>
-                  <td><a href="#"> </a></td>
+                  <td></td>
+                  <td>{{$list->success}}</td>
+                  <td>{{$list->error}}</td>
                 </tr>
                 @endforeach
                 </tbody>
