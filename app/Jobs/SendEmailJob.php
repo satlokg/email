@@ -52,7 +52,7 @@ class SendEmailJob implements ShouldQueue
             $res['campaign_id'] = $this->campaign->id;
             $res['listing_id'] = implode(",",$this->listing_id);
             $emailresp = Emailrespnce::create($res);
-            return view('user.campaign.resp', compact('res'));
+            
             //dd($res);
         }
     }

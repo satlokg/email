@@ -10,6 +10,7 @@ use App\Models\Emaillist;
 use Auth;
 use App\Mail\EndEmail;
 use App\Jobs\SendEmailJob;
+use App\Models\Emailrespnce;
 use Illuminate\Support\Facades\Mail;
 use Config;
 class CampaignController extends Controller
@@ -75,8 +76,9 @@ class CampaignController extends Controller
                 }
         }
 
-        return dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
-
+        dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
+        $res = Emailrespnce::where('campaign_id',$campaign->id)->last();
+        return view('user.campaign.resp', compact('res'));
     	// if($emails){
         //     foreach ($emails as $key => $value) { //dd($value);
         //         $mail= Mail::to($value)
