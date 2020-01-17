@@ -74,7 +74,7 @@ class CampaignController extends Controller
                 Config::set('services.ses.region', $server->driver); 
                 }
         }
-        $res = dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
+        return dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
         //dd($res->job());
     	// if($emails){
         //     foreach ($emails as $key => $value) { //dd($value);
