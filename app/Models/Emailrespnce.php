@@ -8,5 +8,5 @@ class Emailrespnce extends Model
 {
     protected $fillable = [
     	'error','success','campaign_id','listing_id'
-    ]
+    ];
 }
