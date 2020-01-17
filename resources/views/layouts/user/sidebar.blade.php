@@ -40,7 +40,11 @@
             <i class="fa fa-user"></i> <span>Campaign</span>
           </a>
         </li>
-
+        <li>
+          <a href="{{route('campaign.sendin.detail')}}">
+            <i class="fa fa-user"></i> <span>Mail Logs</span>
+          </a>
+        </li>
         
        
         

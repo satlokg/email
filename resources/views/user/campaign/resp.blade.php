@@ -61,24 +61,25 @@
               <!-- /.row -->
             </div>
 
-            <div class="row">
-              <table class="table table-bordered table-striped">
+            <div class="col">
+              <table class="table table-bordered table-striped table-responsive">
                 <thead>
                 <tr class="bg-yellow">
                   <th>Campaign Title</th>
                   <th>Mail List</th>
                   <th>Mail Success</th>
                   <th>Mail Failed</th>
-                  
+                  <th>Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($res as $key=>$list)
                 <tr>
-                  <td></td>
+                  <td>{{@$list->campaigns->subject}}</td>
                   <td></td>
                   <td>{{$list->success}}</td>
                   <td>{{$list->error}}</td>
+                  <td>{{$list->created_at}}</td>
                 </tr>
                 @endforeach
                 </tbody>
