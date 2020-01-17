@@ -73,13 +73,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($res as $key=>$list)
+                @foreach($res as $list)
                 <tr>
-                  <td>{{@$list->campaigns->subject}}</td>
-                  <td></td>
+                  <td>{{@$list->campaign->subject}}</td>
+                  <td>{{@$list->list($list->listing_id)}}</td>
                   <td>{{$list->success}}</td>
                   <td>{{$list->error}}</td>
-                  <td>{{$list->created_at}}</td>
+                  <td>{{$list->created_at->diffForHumans()}}</td>
                 </tr>
                 @endforeach
                 </tbody>

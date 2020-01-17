@@ -10,7 +10,10 @@ class Emailrespnce extends Model
     	'error','success','campaign_id','listing_id','user_id'
     ];
 
-    public function campaigns(){
+    public function campaign(){
     	return $this->belongsTo('App\Models\Campaign');
+    }
+    public function list($list){
+    	return Listing::whereIn('id',explode(',', $list))->pluck('title') ;
     }
 }
