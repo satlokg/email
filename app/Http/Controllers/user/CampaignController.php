@@ -76,9 +76,9 @@ class CampaignController extends Controller
                 }
         }
 
-        dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
-        $res = Emailrespnce::where('campaign_id',$campaign->id)->last();
-        return view('user.campaign.resp', compact('res'));
+        $res = dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
+        // $res = Emailrespnce::where('campaign_id',$campaign->id)->last();
+        // return view('user.campaign.resp', compact('res'));
     	// if($emails){
         //     foreach ($emails as $key => $value) { //dd($value);
         //         $mail= Mail::to($value)
@@ -86,17 +86,21 @@ class CampaignController extends Controller
         //             }
         //         }
         //dd($mail);
-        // if($campaign){
-        //     $notification = array(
-        //                 'message' => 'Email Send', 
-        //                 'alert-type' => 'success'
-        //             );
-        // }else{
-        //     $notification = array(
-        //                 'message' => 'Email not Send', 
-        //                 'alert-type' => 'error'
-        //             );
-        // }
-        //  return redirect()->route('campaign.detail',['id'=>encrypt($campaign->id,'vipra')])->with($notification);
+        if($res){
+            $notification = array(
+                        'message' => 'Email Send', 
+                        'alert-type' => 'success'
+                    );
+        }else{
+            $notification = array(
+                        'message' => 'Email not Send', 
+                        'alert-type' => 'error'
+                    );
+        }
+         return redirect()->route('campaign.sendin.detail')->with($notification);
+    }
+
+    public function sendEmail(){
+        Emailrespnce::where('campaign_id',$campaign->id)->get();
     }
 }
