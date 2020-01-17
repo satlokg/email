@@ -73,25 +73,26 @@ class CampaignController extends Controller
                 Config::set('services.ses.region', $server->driver); 
                 }
         }
-
-    	   if($emails){
-            foreach ($emails as $key => $value) { //dd($value);
-                $mail= Mail::to($value)
-                ->send(new EndEmail($campaign,$value->email));
-                    }
-                }
+        $res = dispatch(new App\Jobs\SendEmailJob($emails,$campaign));
+        dd($res);
+    	// if($emails){
+        //     foreach ($emails as $key => $value) { //dd($value);
+        //         $mail= Mail::to($value)
+        //         ->send(new EndEmail($campaign,$value->email));
+        //             }
+        //         }
         //dd($mail);
-        if($campaign){
-            $notification = array(
-                        'message' => 'Email Send', 
-                        'alert-type' => 'success'
-                    );
-        }else{
-            $notification = array(
-                        'message' => 'Email not Send', 
-                        'alert-type' => 'error'
-                    );
-        }
-         return redirect()->route('campaign.detail',['id'=>encrypt($campaign->id,'vipra')])->with($notification);
+        // if($campaign){
+        //     $notification = array(
+        //                 'message' => 'Email Send', 
+        //                 'alert-type' => 'success'
+        //             );
+        // }else{
+        //     $notification = array(
+        //                 'message' => 'Email not Send', 
+        //                 'alert-type' => 'error'
+        //             );
+        // }
+        //  return redirect()->route('campaign.detail',['id'=>encrypt($campaign->id,'vipra')])->with($notification);
     }
 }
