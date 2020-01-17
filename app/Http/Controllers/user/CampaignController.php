@@ -9,6 +9,7 @@ use App\Models\Server;
 use App\Models\Emaillist;
 use Auth;
 use App\Mail\EndEmail;
+use App\Jobs\SendEmailJob;
 use Illuminate\Support\Facades\Mail;
 use Config;
 class CampaignController extends Controller
@@ -73,7 +74,7 @@ class CampaignController extends Controller
                 Config::set('services.ses.region', $server->driver); 
                 }
         }
-        $res = dispatch(new App\Jobs\SendEmailJob($emails,$campaign));
+        $res = dispatch(new SendEmailJob($emails,$campaign));
         dd($res);
     	// if($emails){
         //     foreach ($emails as $key => $value) { //dd($value);
