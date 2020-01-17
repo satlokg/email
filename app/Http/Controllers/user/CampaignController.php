@@ -100,7 +100,7 @@ class CampaignController extends Controller
          return redirect()->route('campaign.sendin.detail')->with($notification);
     }
 
-    public function sendEmail(){
+    public function sendingEmail(){
         $res = Emailrespnce::where('user_id',Auth::user()->id)
         ->orderBy('id','desc')
         ->sum('error as error')
