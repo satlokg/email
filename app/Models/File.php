@@ -37,7 +37,19 @@ class File extends Model
         }
     }
     
-    
+    static function generateFilenameBlade($filepath=NULL){ 
+        $USER_PATH=public_path()."/upload_file/";
+        //dd($USER_PATH);
+        if($filepath){
+            if(!is_dir($USER_PATH)) mkdir($USER_PATH,0777);
+            
+            $fileinfo = pathinfo($filepath); 
+            $suffix = 1;
+            while(is_file($filepath)) $filepath = dirname($filepath) . "/" . self::sanitize($fileinfo['filename']) . "_" . $suffix++ . "." . 'blade.php'; 
+            
+            return $filepath;
+        }
+    }
     static function sanitize($string, $force_lowercase = true, $anal = false) {
         $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]",
                        "}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;",

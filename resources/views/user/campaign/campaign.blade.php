@@ -64,6 +64,10 @@
                           <textarea name="editor1"></textarea>
                         </div>
                       
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Upload Template</label>
+                          <input type="file" name="file" class="form-control">
+                        </div>
                       
                        
                   </div>

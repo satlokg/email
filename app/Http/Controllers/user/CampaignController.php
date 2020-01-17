@@ -11,6 +11,7 @@ use Auth;
 use App\Mail\EndEmail;
 use App\Jobs\SendEmailJob;
 use App\Models\Emailrespnce;
+use App\Models\File;
 use Illuminate\Support\Facades\Mail;
 use Config;
 class CampaignController extends Controller
@@ -25,9 +26,24 @@ class CampaignController extends Controller
     }
 
     public function campaignPost(Request $r){ //dd($r->all());
-        $campaign = new Campaign();
+         $this->validate($r, [
+                'file' => 'mimes:html',
+        ]);
+          $campaign = new Campaign();
+        if($r->hasfile('file'))
+         {
+            $file = $r->file('file');
+              $destinationPath = public_path('files'); //dd($destinationPath);
+              $filepath =$destinationPath.'/'. File::sanitize($file->getClientOriginalName());
+              $fileinfo = pathinfo(File::generateFilenameBlade($filepath));
+              $imageName= $fileinfo['basename'];
+              $file->move($destinationPath,$imageName);
+              $campaign->template_url=$imageName;
+         }else{
+              $campaign->templates=$r->editor1;
+         }
+       
         $campaign->subject= $r->subject;
-        $campaign->templates=$r->editor1;
         $campaign->user_id=Auth::user()->id;
         $campaign->save();
         if($campaign){

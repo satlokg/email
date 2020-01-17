@@ -53,7 +53,10 @@
                 @foreach($campaigns as $key=>$campaign)
                 <tr>
                   <td>{{$campaign->subject}}</td>
+                  @if($campaign->templates != null)
                   <td><a href="{{route('campaign.detail',encrypt($campaign->id,'vipra'))}}"> view</a></td>
+                  @else
+                  <td><a target="_blank" href="{{route('campaign.detail',encrypt($campaign->id,'vipra'))}}"> view</a></td>
                 </tr>
                 @endforeach
                 </tbody>
