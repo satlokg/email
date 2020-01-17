@@ -37,7 +37,7 @@
 
                     <div class="info-box-content">
                       <span class="info-box-text">Faild</span>
-                      <span class="info-box-number">{{$res['error']}}</span>
+                      <span class="info-box-number">{{$res->sum('error')}}</span>
                     </div>
                     <!-- /.info-box-content -->
                   </div>
@@ -50,7 +50,7 @@
 
                     <div class="info-box-content">
                       <span class="info-box-text">Success</span>
-                      <span class="info-box-number">{{$res['success']}}</span>
+                      <span class="info-box-number">{{$res->sum('success')}}</span>
                     </div>
                     <!-- /.info-box-content -->
                   </div>
@@ -59,6 +59,29 @@
 
              
               <!-- /.row -->
+            </div>
+
+            <div class="row">
+              <table class="table table-bordered table-striped">
+                <thead>
+                <tr class="bg-yellow">
+                  <th></th>
+                  <th>Title</th>
+                  <th>Total Mail Id</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($res as $key=>$list)
+                <tr>
+                  <td><input type="checkbox" name="mailList[]" value="{{$list->id}}"></td>
+                  <td></td>
+                  <td><a href="#"> </a></td>
+                </tr>
+                @endforeach
+                </tbody>
+                
+              </table>
             </div>
            
           </div>
