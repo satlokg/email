@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Mail\EndEmail;
+use App\Models\Emailrespnce;
 use Mail;
 
 class SendEmailJob implements ShouldQueue
@@ -21,10 +22,12 @@ class SendEmailJob implements ShouldQueue
      */
     public $emails;
     public $campaign;
-    public function __construct($emails,$campaign)
+    public $listing_id;
+    public function __construct($emails,$campaign,$listing_id)
     {
-        $this->emails=$emails;
-        $this->campaign=$campaign;
+        $this->emails = $emails;
+        $this->campaign = $campaign;
+        $this->listing_id = $listing_id;
     }
 
     /**
@@ -46,6 +49,10 @@ class SendEmailJob implements ShouldQueue
                     $res['success']=$res['success']+1;
                 }
             }
+            $res['campaign_id'] = $this->campaign->id;
+            $res['listing_id'] = $this->listing_id;
+            $emailresp = Emailrespnce::create($res);
+            return view('user.campaign.resp', compact('res'));
             dd($res);
         }
     }
