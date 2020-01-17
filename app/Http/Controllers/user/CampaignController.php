@@ -101,6 +101,12 @@ class CampaignController extends Controller
     }
 
     public function sendEmail(){
-        Emailrespnce::where('campaign_id',$campaign->id)->get();
+        $res = Emailrespnce::where('user_id',Auth::user()->id)
+        ->orderBy('id','desc')
+        ->sum('error as error')
+        ->sum('success as success')
+        ->get();
+        dd($res);
+        return view('user.campaign.resp', compact('res'));
     }
 }
