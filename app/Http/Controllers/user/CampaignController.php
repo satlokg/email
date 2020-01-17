@@ -75,7 +75,7 @@ class CampaignController extends Controller
                 }
         }
         $res = dispatch(new SendEmailJob($emails,$campaign,json_encode($r->mailList)));
-        //dd($res);
+        dd($res);
     	// if($emails){
         //     foreach ($emails as $key => $value) { //dd($value);
         //         $mail= Mail::to($value)
