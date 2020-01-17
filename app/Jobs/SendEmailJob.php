@@ -34,11 +34,19 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
+        $res['error']=0;
+        $res['success']=0;
         if($this->emails){
             foreach ($this->emails as $key => $value) { //dd($value);
                 $mail= Mail::to($value)
                 ->send(new EndEmail($this->campaign,$value->email));
+                if (Mail::failures()) {
+                    $res['error']=$res['error']+1;
+                }else{
+                    $res['success']=$res['success']+1;
+                }
             }
+            dd($res);
         }
     }
 }
