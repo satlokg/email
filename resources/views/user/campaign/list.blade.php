@@ -57,6 +57,7 @@
                   <td><a href="{{route('campaign.detail',encrypt($campaign->id,'vipra'))}}"> view</a></td>
                   @else
                   <td><a target="_blank" href="{{route('campaign.detail',encrypt($campaign->id,'vipra'))}}"> view</a></td>
+                  @endif
                 </tr>
                 @endforeach
                 </tbody>
