@@ -113,6 +113,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select Role') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control" name="role">
+                                  @foreach($roles as $role)
+                                    <option value="{{$role->name}}">{{$role->name}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

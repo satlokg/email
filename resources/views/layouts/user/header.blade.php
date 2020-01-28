@@ -6,7 +6,8 @@
       <span class="logo-mini"></span>
 
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>User</b> Panel</span>
+      <span class="logo-lg"><b>Hello </b><small>{{Auth::user()->name}} </small></span>
+      
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

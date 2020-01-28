@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\MailNotification;
@@ -16,6 +17,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('contributor');
     }
 
     /**
@@ -30,7 +32,8 @@ class UserController extends Controller
     }
     public function addUser()
     {
-        return view('user.user.adduser');
+        $roles=Role::all();
+        return view('user.user.adduser',compact('roles'));
     }
 
     public function register(Request $request)
@@ -71,7 +74,7 @@ class UserController extends Controller
             'password' => Hash::make($data['password']),
             'admin_id' => Auth::user()->id,
         ]);
-
+        $user->roles()->attach(Role::where('name', $data['role'])->first());
         //$user->notify(new MailNotification); 
         return $user;
         

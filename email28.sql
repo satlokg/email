@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2020 at 01:57 PM
+-- Generation Time: Jan 28, 2020 at 02:12 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -72,7 +72,54 @@ INSERT INTO `campaigns` (`id`, `user_id`, `subject`, `templates`, `template_url`
 (3, 1, 'Good Morning', '<p><img src=\"https://images.app.goo.gl/A6s2AchhdpvBAUX1A\" /></p>', NULL, '2020-01-08 04:27:08', '2020-01-08 04:27:08'),
 (4, 1, 'Good Morning', '<p><a href=\"https://images.app.goo.gl/F13HnxPy6MUocCqy5\"><img alt=\"\" src=\"https://images.app.goo.gl/F13HnxPy6MUocCqy5\" /></a></p>', NULL, '2020-01-08 04:32:31', '2020-01-08 04:32:31'),
 (5, 1, 'Good Morning', '<p><img alt=\"Good morning\" src=\"https://www.birthdaywishes.expert/wp-content/uploads/2015/10/cover-photo-good-morning-images.jpg\" style=\"height:450px; width:810px\" /></p>', NULL, '2020-01-08 04:33:56', '2020-01-08 04:33:56'),
-(6, 1, 'html', NULL, 'index.html', '2020-01-17 12:54:01', '2020-01-17 12:54:01');
+(6, 1, 'html', NULL, 'index.html', '2020-01-17 12:54:01', '2020-01-17 12:54:01'),
+(7, 1, 'blade', NULL, 'index_1..blade.php', '2020-01-17 13:00:21', '2020-01-17 13:00:21'),
+(8, 1, 'blade2', NULL, 'index_1.blade.php', '2020-01-17 13:01:36', '2020-01-17 13:01:36'),
+(9, 1, 'blade', NULL, 'index.html', '2020-01-27 12:49:37', '2020-01-27 12:49:37'),
+(10, 1, 'welcome', NULL, 'index3.html', '2020-01-27 12:51:41', '2020-01-27 12:51:41'),
+(11, 1, 'welcome', NULL, 'index2.html', '2020-01-27 12:56:46', '2020-01-27 12:56:46'),
+(12, 1, 'Good Morning', NULL, 'index2_1.blade.php', '2020-01-27 12:57:51', '2020-01-27 12:57:51'),
+(13, 1, 'blade', NULL, 'index2.html', '2020-01-27 13:00:39', '2020-01-27 13:00:39'),
+(14, 1, 'blade', NULL, 'index2_1.blade.php', '2020-01-27 13:01:15', '2020-01-27 13:01:15'),
+(15, 1, 'welcome', '<p>sdfsdf</p>', NULL, '2020-01-27 13:03:38', '2020-01-27 13:03:38'),
+(16, 1, 'Good Morning', NULL, 'starter_1.blade.php', '2020-01-27 13:03:56', '2020-01-27 13:03:56'),
+(17, 1, 'dfdsf', NULL, 'starter_1.blade.php', '2020-01-27 13:04:23', '2020-01-27 13:04:23'),
+(18, 1, 'welcome', NULL, 'starter.blade.php', '2020-01-27 13:05:25', '2020-01-27 13:05:25'),
+(19, 1, 'wer', NULL, 'gallery.blade.php', '2020-01-27 13:06:25', '2020-01-27 13:06:25'),
+(20, 1, 'welcome', NULL, 'gallery.blade.php', '2020-01-27 13:07:07', '2020-01-27 13:07:07'),
+(21, 1, 'as', NULL, 'gallery.blade.php', '2020-01-27 13:10:49', '2020-01-27 13:10:49'),
+(22, 1, 'Good Morning', NULL, 'gallery.blade.php', '2020-01-27 13:11:18', '2020-01-27 13:11:18'),
+(23, 1, 'welcome', NULL, 'gallery.blade.php', '2020-01-27 13:12:00', '2020-01-27 13:12:00'),
+(24, 1, 'welcome', NULL, 'calendar.blade.php', '2020-01-27 13:13:56', '2020-01-27 13:13:56'),
+(25, 1, 'blade', NULL, 'calendar.blade.php', '2020-01-27 13:14:12', '2020-01-27 13:14:12'),
+(26, 1, 'welcome', NULL, 'widgets.html', '2020-01-27 13:15:19', '2020-01-27 13:15:19'),
+(27, 6, 'welcome', '<p>asasa</p>', NULL, '2020-01-28 10:22:28', '2020-01-28 10:22:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `domain` varchar(255) DEFAULT NULL,
+  `driver` varchar(100) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `server_key` text DEFAULT NULL,
+  `secret` text NOT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `domain`, `driver`, `title`, `server_key`, `secret`, `region`, `user_id`, `updated_at`, `created_at`) VALUES
+(1, NULL, 'smtp', 'testing updated', 'qsqwsqws', 'h3sd+5dgwTZaAYen0S22VUBp+YWnSV0PS48BZ9NL', 'ap-south-1', 1, '2020-01-28 09:35:47', '2020-01-28 09:35:47');
 
 -- --------------------------------------------------------
 
@@ -186,6 +233,22 @@ INSERT INTO `listings` (`id`, `title`, `user_id`, `updated_at`, `created_at`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mailguns`
+--
+
+CREATE TABLE `mailguns` (
+  `id` int(11) NOT NULL,
+  `driver` varchar(112) NOT NULL,
+  `domain` varchar(255) NOT NULL,
+  `secret` text NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `messages`
 --
 
@@ -220,7 +283,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2020_01_06_074020_create_admins_table', 2),
 (5, '2019_08_14_102438_create_notifications_table', 3),
 (6, '2019_11_01_071050_create_messages_table', 3),
-(7, '2020_01_17_105112_create_jobs_table', 3);
+(7, '2020_01_17_105112_create_jobs_table', 3),
+(8, '2020_01_28_170825_create_roles_table', 4),
+(9, '2020_01_28_171105_create_role_user_table', 5);
 
 -- --------------------------------------------------------
 
@@ -251,6 +316,58 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('satlok.vipra@gmail.com', '$2y$10$3FYs00O3iUHPB7nSi0IK6uMVIH50DEMZq2pFNF3UZokWOpFl.a4/6', '2020-01-27 12:38:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '', '2020-01-27 18:30:00', NULL),
+(2, 'Co-admin', '', '2020-01-27 18:30:00', NULL),
+(3, 'Contributor', 'Contributor', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_user`
+--
+
+INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 2, 7, NULL, NULL),
+(5, 3, 8, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -268,32 +385,17 @@ CREATE TABLE `servers` (
   `encryption` varchar(255) DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` tinyint(1) NOT NULL DEFAULT 1
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `servers`
 --
 
-INSERT INTO `servers` (`id`, `title`, `hostname`, `port`, `username`, `password`, `driver`, `encryption`, `updated_at`, `created_at`, `status`) VALUES
-(4, 'tiavik', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-01-07 11:36:37', '2020-01-07 11:36:37', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `seservers`
---
-
-CREATE TABLE `seservers` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `ses_key` varchar(255) NOT NULL,
-  `secret` text NOT NULL,
-  `region` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `servers` (`id`, `title`, `hostname`, `port`, `username`, `password`, `driver`, `encryption`, `updated_at`, `created_at`, `status`, `user_id`) VALUES
+(4, 'tiavik', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:29', '2020-01-07 11:36:37', 1, 1),
+(5, 'testing updated', 'mail.tiavik.com', 'ASA0:00', 'testing@yahoo.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:33', '2020-01-28 09:37:24', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -309,6 +411,7 @@ CREATE TABLE `users` (
   `is_admin` tinyint(1) DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -317,8 +420,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'satlok', 'satlok.vipra@gmail.com', NULL, NULL, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'aWsIoJDZpEg15VDU2IzcfARyfzXIzpfNZPY4MPVnkjahv7Fz865BjcFuVbHj', '2020-01-06 01:26:54', '2020-01-06 01:26:54');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `admin_id`, `created_at`, `updated_at`) VALUES
+(1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'fW2KTDhBH5PbV0sjOXqLOLy4q47QH7YKJSPQS01zgXSSuawOsRRlJoGrjSqw', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
+(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', NULL, 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
+(8, 'Avinash', 'avinash.vipra@gmail.com', NULL, NULL, '$2y$10$i4QiutlcKx3/.Sm8agX2gegh2CsOkodnznzKiP7fG7xIfwWEs0EE6', NULL, 1, '2020-01-28 12:41:16', '2020-01-28 12:41:16');
 
 --
 -- Indexes for dumped tables
@@ -335,6 +440,12 @@ ALTER TABLE `admins`
 -- Indexes for table `campaigns`
 --
 ALTER TABLE `campaigns`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -369,6 +480,12 @@ ALTER TABLE `listings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mailguns`
+--
+ALTER TABLE `mailguns`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -394,15 +511,21 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `servers`
+-- Indexes for table `roles`
 --
-ALTER TABLE `servers`
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `seservers`
+-- Indexes for table `role_user`
 --
-ALTER TABLE `seservers`
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `servers`
+--
+ALTER TABLE `servers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -425,7 +548,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `campaigns`
 --
 ALTER TABLE `campaigns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `emaillists`
@@ -458,6 +587,12 @@ ALTER TABLE `listings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
+-- AUTO_INCREMENT for table `mailguns`
+--
+ALTER TABLE `mailguns`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -467,25 +602,31 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `role_user`
+--
+ALTER TABLE `role_user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `servers`
 --
 ALTER TABLE `servers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `seservers`
---
-ALTER TABLE `seservers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

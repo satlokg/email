@@ -7,7 +7,7 @@
           <img src="{{url('public/img/logo.png')}}" class="img-thumbnail" alt="User Image">
           
       </div>
-
+     
       <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">

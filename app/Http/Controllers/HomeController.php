@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+         $this->middleware('contributor')->only('mailListPost');
     }
 
     /**
@@ -68,54 +69,7 @@ class HomeController extends Controller
         //dd($email);
     }
 
-    public function projectComment(Request $r)
-    {
-        $this->validate($r, [
-                'filenames.*' => 'mimes:doc,pdf,docx,zip,png,jpg,xlsx,xls',
-                'task.comment'=>'required'
-        ]);
-        $t=$r->task;
-        $t['user_id']=Auth::user()->id;
-        if($r->task['id']){
-            $task=Task::find($r->task['id']);
-            $task->comment=$r->task['comment'];
-            $task->hours=$r->task['hours'];
-            $task->save();
-        }else{
-            $task=Task::create($t);
-        }
-        
-        if($r->hasfile('filenames'))
-         {
-            foreach($r->file('filenames') as $file)
-            {
-                // $name=$file->getClientOriginalName();
-                // $file->move(public_path().'/files/', $name);
-              $destinationPath = public_path('files'); 
-              $filepath =$destinationPath.'/'. File::sanitize($file->getClientOriginalName());
-              $fileinfo = pathinfo(File::generateFilename($filepath));
-              $imageName= $fileinfo['basename'];
-              $file->move($destinationPath,$imageName);
-                $f= new Taskdac();
-                 $f->filename=$imageName;
-                 $f->task_id=$task->id;
-                 $f->save(); 
-            }
-         }
-         if($task){
-            $notification = array(
-                        'message' => 'Comment Aded', 
-                        'alert-type' => 'success'
-                    );
-        }else{
-            $notification = array(
-                        'message' => 'Comment not Aded', 
-                        'alert-type' => 'danger'
-                    );
-        }
-         return redirect()->route('user.projects.detail',['id'=>encrypt($r->task['project_id'],'vipra')])->with($notification);
-    }
-
+   
     public function notify(){
          $user= User::all();
          $data=collect([

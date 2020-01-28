@@ -20,9 +20,11 @@ class CampaignController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('contributor')->only('campaignPost','campaign');
     }
 
     public function campaign(){
+
         return view('user.campaign.campaign');
     }
 
@@ -70,7 +72,7 @@ class CampaignController extends Controller
         $listings = Listing::listing()->get();
         return view('user.campaign.detail', compact('campaign','servers','listings'));
     }
-    public function campaignList(){
+    public function campaignList(){ 
     	$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);
         return view('user.campaign.list', compact('campaigns'));
     }
