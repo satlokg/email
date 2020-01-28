@@ -40,7 +40,8 @@ class HomeController extends Controller
     }
 
     public function mailList(){
-        return view('user.maillist');
+        $listings = Listing::listing()->get();
+        return view('user.maillist',compact('listings'));
     }
 
     public function mailListPost(Request $r){

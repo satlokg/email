@@ -19,12 +19,12 @@
  @section('bread')
  <section class="content-header">
       <h1>
-        Mail List Detail
+        Smtp Server Detail
       
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
-        <li class="active">Mail List</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+        <li class="active">Smtp Server Detail</li>
         <li class="active">Add</li>
       </ol>
 @endsection
@@ -34,12 +34,12 @@
 
       <div class="row">
         <div class="col-md-12">
-           <form method="POST" action="{{ route('mailList.post') }}" enctype="multipart/form-data">
+           <form method="POST" action="{{ route('user.smtp.post') }}" enctype="multipart/form-data">
             @csrf
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Add Credentials</h3>
-              
+              @include('user.server.timeline')
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -60,10 +60,29 @@
                           <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Choose File (Spreed Sheet)</label>
-                          <input type="file" name="file" class="form-control" >
+                          <label for="exampleInputPassword1">Host Name</label>
+                          <input type="text" name="hostname" class="form-control" id="exampleInputPassword1" placeholder="Host Name">
                         </div>
-                      
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Port</label>
+                          <input type="text" name="port" class="form-control" placeholder="Port">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Username</label>
+                          <input type="text" name="username" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="text" name="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Driver</label>
+                          <input type="text" name="driver" class="form-control" placeholder="Driver">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Encryption</label>
+                          <input type="text" name="encryption" class="form-control" placeholder="Encryption">
+                        </div>
                       
                        
                   </div>
@@ -89,13 +108,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($listings as $key=>$list)
-                <tr>
-                  <td>{{$list->title}}</td>
-                  <td><a href="{{route('listDetail',['id'=>encrypt($list->id,'vipra')])}}" target="_blank"> {{$list->emaillists->count()}}</a></td>
+                 @foreach($servers as $key=>$server)
+                  <tr class="bg-green">
+                  <td>{{$server->title}}</td>
+                  <td>{{$server->hostname}}</td>
                   <td></td>
-                </tr>
-                @endforeach
+                  
+                   </tr>
+               @endforeach
                 </tbody>
                 
               </table>

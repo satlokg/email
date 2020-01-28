@@ -6,7 +6,6 @@
  <section class="content-header">
       <h1>
         Templates Detail
-      
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>

@@ -122,10 +122,10 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="{{route('users')}}">Users</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="{{route('server')}}">Servers</a>
                   </div>
                   <div class="col-xs-4 text-center">
                     <a href="#">Friends</a>

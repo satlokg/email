@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\Attempt;
 use Carbon\Carbon;
 use DateTime;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','emp_id','technology','phone','designation'
+        'name', 'email', 'password','admin_id'
     ];
 
     /**
@@ -37,6 +38,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function scopeUsers($query)
+    {
+        return $query->where('admin_id', Auth::user()->id);
+    }
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

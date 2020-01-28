@@ -11,6 +11,7 @@ use Auth;
 use App\Mail\EndEmail;
 use App\Jobs\SendEmailJob;
 use App\Models\Emailrespnce;
+use App\Models\Listing;
 use App\Models\File;
 use Illuminate\Support\Facades\Mail;
 use Config;
@@ -33,8 +34,11 @@ class CampaignController extends Controller
         if($r->hasfile('file'))
          {
             $file = $r->file('file');
-              $destinationPath = public_path('files'); //dd($destinationPath);
+             
+              $destinationPath = str_replace("public","resources/views/emails",public_path());
+              //dd($destinationPath);
               $filepath =$destinationPath.'/'. File::sanitize($file->getClientOriginalName());
+
               $fileinfo = pathinfo(File::generateFilenameBlade($filepath));
               $imageName= $fileinfo['basename'];
               $file->move($destinationPath,$imageName);
@@ -62,8 +66,9 @@ class CampaignController extends Controller
 
     public function campaignDesplay($id=null){
     	$campaign = Campaign::find(decrypt($id,'vipra')); //dd($campaign);
-    	$servers = Server::all();//dd($campaign);
-        return view('user.campaign.detail', compact('campaign','servers'));
+    	$servers = Server::server()->get();//dd($campaign);
+        $listings = Listing::listing()->get();
+        return view('user.campaign.detail', compact('campaign','servers','listings'));
     }
     public function campaignList(){
     	$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);
@@ -86,9 +91,10 @@ class CampaignController extends Controller
             	Config::set('mail.from.address', $r->from);
             }
             if($server->driver == 'ses'){
-                Config::set('services.ses.key', $server->driver); 
-                Config::set('services.ses.secret', $server->driver); 
-                Config::set('services.ses.region', $server->driver); 
+                Config::set('mail.driver', $server->driver);
+                Config::set('services.ses.key', $server->key); 
+                Config::set('services.ses.secret', $server->secret); 
+                Config::set('services.ses.region', $server->region); 
                 }
         }
 

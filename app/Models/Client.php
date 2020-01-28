@@ -4,13 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
-
-class Server extends Model
+class Client extends Model
 {
     protected $fillable=[
-		'title','hostname','port','username','password','encryption','driver'
+		'title','server_key','secret','region','user_id','domain','driver'
     ];
-
     public function scopeServer($query)
     {
     	if( Auth::user()->admin_id != null){

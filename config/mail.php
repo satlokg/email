@@ -11,16 +11,12 @@ return [
     | sending of e-mail. You may specify which one you're using throughout
     | your application here. By default, Laravel is setup for SMTP mail.
     |
-    | Supported: "smtp", "sendmail", "mailgun", "mandrill", "ses",
-    |            "sparkpost", "postmark", "log", "array"
+    | Supported: "smtp", "sendmail", "mailgun", "ses",
+    |            "postmark", "log", "array"
     |
     */
-    'driver' => 'smtp',
-    'host' => '127.0.0.1',
-    'port' => 1025,
-    'encryption' => '',
 
-   // 'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +29,7 @@ return [
     |
     */
 
-    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +42,7 @@ return [
     |
     */
 
-   // 'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +71,7 @@ return [
     |
     */
 
-    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -88,9 +84,9 @@ return [
     |
     */
 
-    //'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME'),
 
-   // 'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +100,6 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-
 
     /*
     |--------------------------------------------------------------------------

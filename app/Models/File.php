@@ -45,6 +45,10 @@ class File extends Model
             
             $fileinfo = pathinfo($filepath); 
             $suffix = 1;
+            if(!is_file($filepath)){
+                $filepath = dirname($filepath) . "/" . self::sanitize($fileinfo['filename']). "." . 'blade.php';
+                return $filepath;
+            }
             while(is_file($filepath)) $filepath = dirname($filepath) . "/" . self::sanitize($fileinfo['filename']) . "_" . $suffix++ . "." . 'blade.php'; 
             
             return $filepath;

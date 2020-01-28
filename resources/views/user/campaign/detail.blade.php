@@ -82,7 +82,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach(Auth::user()->listings as $key=>$list)
+                @foreach($listings as $key=>$list)
                 <tr>
                   <td><input type="checkbox" name="mailList[]" value="{{$list->id}}"></td>
                   <td>{{$list->title}}</td>

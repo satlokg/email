@@ -59,7 +59,17 @@ Route::post('/send-email', 'user\CampaignController@sendEmail')->name('sendEmail
 Route::get('/campaignList', 'user\CampaignController@campaignList')->name('campaignList');
 Route::get('/campaign-send-detail', 'user\CampaignController@sendingEmail')->name('campaign.sendin.detail');
 
+//users
+Route::get('/users', 'user\UserController@index')->name('users');
+Route::get('/users/add', 'user\UserController@addUser')->name('users.add');
+Route::post('/users/register', 'user\UserController@register')->name('users.register');
 
+//server
+Route::get('/server', 'user\ServerController@index')->name('server');
+Route::get('/server/add/client', 'user\ServerController@addServerClient')->name('server.add.client');
+Route::get('/server/add/smtp', 'user\ServerController@addServerSmtp')->name('server.add.smtp');
+Route::post('/smtp-server', 'user\ServerController@smtpserverPost')->name('user.smtp.post');
+Route::post('/client-server', 'user\ServerController@clintserverPost')->name('user.client.post');
 
 
 Route::get('/notify', 'HomeController@notify')->name('notify');

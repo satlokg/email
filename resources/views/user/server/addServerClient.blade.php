@@ -19,12 +19,12 @@
  @section('bread')
  <section class="content-header">
       <h1>
-        Mail List Detail
+        Client Server Detail
       
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
-        <li class="active">Mail List</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+        <li class="active">Client Server Detail</li>
         <li class="active">Add</li>
       </ol>
 @endsection
@@ -34,12 +34,12 @@
 
       <div class="row">
         <div class="col-md-12">
-           <form method="POST" action="{{ route('mailList.post') }}" enctype="multipart/form-data">
+           <form method="POST" action="{{ route('user.client.post') }}" enctype="multipart/form-data">
             @csrf
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Add Credentials</h3>
-              
+              @include('user.server.timeline')
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -55,16 +55,26 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Title</label>
-                          <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
+                       <div class="form-group">
+                          <label for="exampleInputPassword1">Title</label>
+                          <input type="text" name="title" class="form-control" id="exampleInputPassword1" placeholder="Host Name">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Choose File (Spreed Sheet)</label>
-                          <input type="file" name="file" class="form-control" >
+                          <label for="exampleInputPassword1">Driver</label>
+                          <input type="text" name="driver" class="form-control" id="exampleInputPassword1" placeholder="Host Name">
                         </div>
-                      
-                      
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Key</label>
+                          <input type="text" name="server_key" class="form-control" id="exampleInputPassword1" placeholder="Host Name">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Secret/Token</label>
+                          <input type="text" name="secret" class="form-control" placeholder="Port">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Resion</label>
+                          <input type="text" name="region" class="form-control" placeholder="Username">
+                        </div>
                        
                   </div>
           <!-- /.box -->
@@ -84,18 +94,22 @@
                 <thead>
                 <tr class="bg-yellow">
                   <th>Server Title</th>
-                  <th>Host Name</th>
+                  <th>Driver</th>
+                  <th>Reson</th>
                   <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($listings as $key=>$list)
-                <tr>
-                  <td>{{$list->title}}</td>
-                  <td><a href="{{route('listDetail',['id'=>encrypt($list->id,'vipra')])}}" target="_blank"> {{$list->emaillists->count()}}</a></td>
+                
+                 @foreach($servers as $key=>$server)
+                  <tr class="bg-green">
+                  <td>{{$server->title}}</td>
+                  <td>{{$server->driver}}</td>
+                  <td>{{$server->region}}</td>
                   <td></td>
-                </tr>
-                @endforeach
+                  
+                   </tr>
+               @endforeach
                 </tbody>
                 
               </table>
