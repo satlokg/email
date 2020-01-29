@@ -37,7 +37,10 @@ class User extends Authenticatable
     {
       return $this->belongsToMany(Role::class);
     }
-
+    public function teams()
+    {
+      return $this->belongsToMany('App\Models\Team','user_team');
+    }
     /**
      * The attributes that should be cast to native types.
      *
@@ -46,6 +49,15 @@ class User extends Authenticatable
     public function scopeUsers($query)
     {
         return $query->where('admin_id', Auth::user()->id);
+    }
+    public function scopeUser($query)
+    {
+        if( Auth::user()->admin_id != null){
+            return $query->where('admin_id', Auth::user()->admin_id);
+        }else{
+            return $query->where('admin_id', Auth::user()->id);
+        }
+        
     }
     protected $casts = [
         'email_verified_at' => 'datetime',

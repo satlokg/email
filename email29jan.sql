@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2020 at 02:12 PM
+-- Generation Time: Jan 29, 2020 at 01:47 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -61,39 +61,6 @@ CREATE TABLE `campaigns` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `campaigns`
---
-
-INSERT INTO `campaigns` (`id`, `user_id`, `subject`, `templates`, `template_url`, `updated_at`, `created_at`) VALUES
-(1, 1, 'sdfdsf', '<div style=\"color:#fefefe; display:none; font-family:\'Lato\',Helvetica,Arial,sans-serif; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden\">We&#39;re thrilled to have you here! Get ready to dive into your new account.</div>\r\n\r\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%\"><!-- LOGO -->\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"vertical-align:top\">&nbsp;</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"border-radius:4px 4px 0px 0px; vertical-align:top\">\r\n						<h1 style=\"margin-left:0px; margin-right:0px\">Don&#39;t Leave!</h1>\r\n						<img src=\" https://img.icons8.com/clouds/100/000000/sad.png\" style=\"border:0px; display:block; height:120px; width:125px\" /></td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td>\r\n						<p style=\"margin-left:0px; margin-right:0px\">We&#39;re sad as we couldn&#39;t satisfy you with our service. we will try our best to make our services better for customers like you.<br />\r\n						<br />\r\n						Think once more if you want us to give one more try Just press the button below to reactivate your account</p>\r\n						</td>\r\n					</tr>\r\n					<tr>\r\n						<td>\r\n						<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%\">\r\n							<tbody>\r\n								<tr>\r\n									<td>\r\n									<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n										<tbody>\r\n											<tr>\r\n												<td style=\"border-radius:3px\"><a href=\"#\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #3cbeb2; display: inline-block;\" target=\"_blank\">Reactivate Account</a></td>\r\n											</tr>\r\n										</tbody>\r\n									</table>\r\n									</td>\r\n								</tr>\r\n							</tbody>\r\n						</table>\r\n						</td>\r\n					</tr>\r\n					<!-- COPY -->\r\n					<tr>\r\n						<td>\r\n						<p style=\"margin-left:0px; margin-right:0px\">If you have any questions, just reply to this email&mdash;we&#39;re always happy to help out.</p>\r\n						</td>\r\n					</tr>\r\n					<tr>\r\n						<td style=\"border-radius:0px 0px 4px 4px\">\r\n						<p style=\"margin-left:0px; margin-right:0px\">Thanks for choosing our service,<br />\r\n						BBB Team</p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"border-radius:4px 4px 4px 4px\">\r\n						<h2 style=\"margin-left:0px; margin-right:0px\">Need more help?</h2>\r\n\r\n						<p style=\"margin-left:0px; margin-right:0px\"><a href=\"#\" style=\"color: #3cbeb2;\" target=\"_blank\">We&rsquo;re here to help you out</a></p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td>&nbsp;\r\n						<p style=\"margin-left:0px; margin-right:0px\">If these emails get annoying, please feel free to <a href=\"#\" style=\"color: #111111; font-weight: 700;\" target=\"_blank\">unsubscribe</a>.</p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>', NULL, '2020-01-07 08:10:56', '2020-01-07 08:10:56'),
-(2, 1, 'sdfdsf', '<div style=\"color:#fefefe; display:none; font-family:\'Lato\',Helvetica,Arial,sans-serif; font-size:1px; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden\">We&#39;re thrilled to have you here! Get ready to dive into your new account.</div>\r\n\r\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%\"><!-- LOGO -->\r\n	<tbody>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"vertical-align:top\">&nbsp;</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"border-radius:4px 4px 0px 0px; vertical-align:top\">\r\n						<h1 style=\"margin-left:0px; margin-right:0px\">Don&#39;t Leave!</h1>\r\n						<img src=\" https://img.icons8.com/clouds/100/000000/sad.png\" style=\"border:0px; display:block; height:120px; width:125px\" /></td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td>\r\n						<p style=\"margin-left:0px; margin-right:0px\">We&#39;re sad as we couldn&#39;t satisfy you with our service. we will try our best to make our services better for customers like you.<br />\r\n						<br />\r\n						Think once more if you want us to give one more try Just press the button below to reactivate your account</p>\r\n						</td>\r\n					</tr>\r\n					<tr>\r\n						<td>\r\n						<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%\">\r\n							<tbody>\r\n								<tr>\r\n									<td>\r\n									<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\r\n										<tbody>\r\n											<tr>\r\n												<td style=\"border-radius:3px\"><a href=\"#\" style=\"font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #3cbeb2; display: inline-block;\" target=\"_blank\">Reactivate Account</a></td>\r\n											</tr>\r\n										</tbody>\r\n									</table>\r\n									</td>\r\n								</tr>\r\n							</tbody>\r\n						</table>\r\n						</td>\r\n					</tr>\r\n					<!-- COPY -->\r\n					<tr>\r\n						<td>\r\n						<p style=\"margin-left:0px; margin-right:0px\">If you have any questions, just reply to this email&mdash;we&#39;re always happy to help out.</p>\r\n						</td>\r\n					</tr>\r\n					<tr>\r\n						<td style=\"border-radius:0px 0px 4px 4px\">\r\n						<p style=\"margin-left:0px; margin-right:0px\">Thanks for choosing our service,<br />\r\n						BBB Team</p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td style=\"border-radius:4px 4px 4px 4px\">\r\n						<h2 style=\"margin-left:0px; margin-right:0px\">Need more help?</h2>\r\n\r\n						<p style=\"margin-left:0px; margin-right:0px\"><a href=\"#\" style=\"color: #3cbeb2;\" target=\"_blank\">We&rsquo;re here to help you out</a></p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td>\r\n			<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px; width:100%\">\r\n				<tbody>\r\n					<tr>\r\n						<td>&nbsp;\r\n						<p style=\"margin-left:0px; margin-right:0px\">If these emails get annoying, please feel free to <a href=\"#\" style=\"color: #111111; font-weight: 700;\" target=\"_blank\">unsubscribe</a>.</p>\r\n						</td>\r\n					</tr>\r\n				</tbody>\r\n			</table>\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>', NULL, '2020-01-07 08:18:42', '2020-01-07 08:18:42'),
-(3, 1, 'Good Morning', '<p><img src=\"https://images.app.goo.gl/A6s2AchhdpvBAUX1A\" /></p>', NULL, '2020-01-08 04:27:08', '2020-01-08 04:27:08'),
-(4, 1, 'Good Morning', '<p><a href=\"https://images.app.goo.gl/F13HnxPy6MUocCqy5\"><img alt=\"\" src=\"https://images.app.goo.gl/F13HnxPy6MUocCqy5\" /></a></p>', NULL, '2020-01-08 04:32:31', '2020-01-08 04:32:31'),
-(5, 1, 'Good Morning', '<p><img alt=\"Good morning\" src=\"https://www.birthdaywishes.expert/wp-content/uploads/2015/10/cover-photo-good-morning-images.jpg\" style=\"height:450px; width:810px\" /></p>', NULL, '2020-01-08 04:33:56', '2020-01-08 04:33:56'),
-(6, 1, 'html', NULL, 'index.html', '2020-01-17 12:54:01', '2020-01-17 12:54:01'),
-(7, 1, 'blade', NULL, 'index_1..blade.php', '2020-01-17 13:00:21', '2020-01-17 13:00:21'),
-(8, 1, 'blade2', NULL, 'index_1.blade.php', '2020-01-17 13:01:36', '2020-01-17 13:01:36'),
-(9, 1, 'blade', NULL, 'index.html', '2020-01-27 12:49:37', '2020-01-27 12:49:37'),
-(10, 1, 'welcome', NULL, 'index3.html', '2020-01-27 12:51:41', '2020-01-27 12:51:41'),
-(11, 1, 'welcome', NULL, 'index2.html', '2020-01-27 12:56:46', '2020-01-27 12:56:46'),
-(12, 1, 'Good Morning', NULL, 'index2_1.blade.php', '2020-01-27 12:57:51', '2020-01-27 12:57:51'),
-(13, 1, 'blade', NULL, 'index2.html', '2020-01-27 13:00:39', '2020-01-27 13:00:39'),
-(14, 1, 'blade', NULL, 'index2_1.blade.php', '2020-01-27 13:01:15', '2020-01-27 13:01:15'),
-(15, 1, 'welcome', '<p>sdfsdf</p>', NULL, '2020-01-27 13:03:38', '2020-01-27 13:03:38'),
-(16, 1, 'Good Morning', NULL, 'starter_1.blade.php', '2020-01-27 13:03:56', '2020-01-27 13:03:56'),
-(17, 1, 'dfdsf', NULL, 'starter_1.blade.php', '2020-01-27 13:04:23', '2020-01-27 13:04:23'),
-(18, 1, 'welcome', NULL, 'starter.blade.php', '2020-01-27 13:05:25', '2020-01-27 13:05:25'),
-(19, 1, 'wer', NULL, 'gallery.blade.php', '2020-01-27 13:06:25', '2020-01-27 13:06:25'),
-(20, 1, 'welcome', NULL, 'gallery.blade.php', '2020-01-27 13:07:07', '2020-01-27 13:07:07'),
-(21, 1, 'as', NULL, 'gallery.blade.php', '2020-01-27 13:10:49', '2020-01-27 13:10:49'),
-(22, 1, 'Good Morning', NULL, 'gallery.blade.php', '2020-01-27 13:11:18', '2020-01-27 13:11:18'),
-(23, 1, 'welcome', NULL, 'gallery.blade.php', '2020-01-27 13:12:00', '2020-01-27 13:12:00'),
-(24, 1, 'welcome', NULL, 'calendar.blade.php', '2020-01-27 13:13:56', '2020-01-27 13:13:56'),
-(25, 1, 'blade', NULL, 'calendar.blade.php', '2020-01-27 13:14:12', '2020-01-27 13:14:12'),
-(26, 1, 'welcome', NULL, 'widgets.html', '2020-01-27 13:15:19', '2020-01-27 13:15:19'),
-(27, 6, 'welcome', '<p>asasa</p>', NULL, '2020-01-28 10:22:28', '2020-01-28 10:22:28');
 
 -- --------------------------------------------------------
 
@@ -171,13 +138,6 @@ CREATE TABLE `emailrespnces` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `emailrespnces`
---
-
-INSERT INTO `emailrespnces` (`id`, `user_id`, `error`, `success`, `campaign_id`, `listing_id`, `updated_at`, `created_at`) VALUES
-(10, 1, 0, 1, 1, '77', '2020-01-17 10:09:04', '2020-01-17 13:53:37');
-
 -- --------------------------------------------------------
 
 --
@@ -222,13 +182,6 @@ CREATE TABLE `listings` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `listings`
---
-
-INSERT INTO `listings` (`id`, `title`, `user_id`, `updated_at`, `created_at`) VALUES
-(77, 'Vipra Team', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29');
 
 -- --------------------------------------------------------
 
@@ -400,6 +353,34 @@ INSERT INTO `servers` (`id`, `title`, `hostname`, `port`, `username`, `password`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `teamname` varchar(255) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `user_id`, `teamname`, `created_by`, `updated_at`, `created_at`) VALUES
+(1, 1, 'fdz', 7, '2020-01-29 11:42:20', '2020-01-29 11:42:20'),
+(2, 1, 'fdz', 7, '2020-01-29 11:51:50', '2020-01-29 11:51:50'),
+(3, 1, 'fdz', 7, '2020-01-29 11:52:31', '2020-01-29 11:52:31'),
+(4, 1, 'asd', 7, '2020-01-29 11:52:41', '2020-01-29 11:52:41'),
+(5, 1, 'sde', 7, '2020-01-29 11:53:12', '2020-01-29 11:53:12'),
+(6, 1, 'team', 7, '2020-01-29 12:13:15', '2020-01-29 12:13:15'),
+(7, 1, 'dew', 7, '2020-01-29 12:18:44', '2020-01-29 12:18:44');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -422,8 +403,29 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `admin_id`, `created_at`, `updated_at`) VALUES
 (1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'fW2KTDhBH5PbV0sjOXqLOLy4q47QH7YKJSPQS01zgXSSuawOsRRlJoGrjSqw', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
-(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', NULL, 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
+(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'ctRSpMvjN0ukjsvAzTdb1zgtuL3nh8oM02IOGVpmpGb4r3lr8zLScOHo1p0t', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
 (8, 'Avinash', 'avinash.vipra@gmail.com', NULL, NULL, '$2y$10$i4QiutlcKx3/.Sm8agX2gegh2CsOkodnznzKiP7fG7xIfwWEs0EE6', NULL, 1, '2020-01-28 12:41:16', '2020-01-28 12:41:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_team`
+--
+
+CREATE TABLE `user_team` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_team`
+--
+
+INSERT INTO `user_team` (`id`, `user_id`, `team_id`, `status`) VALUES
+(1, 7, 7, 1),
+(2, 8, 7, 1);
 
 --
 -- Indexes for dumped tables
@@ -529,9 +531,21 @@ ALTER TABLE `servers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_team`
+--
+ALTER TABLE `user_team`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -623,10 +637,22 @@ ALTER TABLE `servers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user_team`
+--
+ALTER TABLE `user_team`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

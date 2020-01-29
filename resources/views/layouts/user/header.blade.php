@@ -123,13 +123,13 @@
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="{{route('users')}}">Users</a>
+                    <a href="{{route('users')}}">Manage Users</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="{{route('server')}}">Servers</a>
+                    <a href="{{route('server')}}">Manage Servers</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="{{route('team')}}">Manage Team</a>
                   </div>
                 </div>
                 <!-- /.row -->

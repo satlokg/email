@@ -71,6 +71,11 @@ Route::get('/server/add/smtp', 'user\ServerController@addServerSmtp')->name('ser
 Route::post('/smtp-server', 'user\ServerController@smtpserverPost')->name('user.smtp.post');
 Route::post('/client-server', 'user\ServerController@clintserverPost')->name('user.client.post');
 
+//team
+Route::get('/team', 'user\TeamController@index')->name('team');
+Route::get('/team/add', 'user\TeamController@add')->name('team.add');
+Route::post('/team/add/post', 'user\TeamController@post')->name('team.add.post');
+
 
 Route::get('/notify', 'HomeController@notify')->name('notify');
 
