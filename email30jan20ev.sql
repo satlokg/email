@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2020 at 08:42 AM
+-- Generation Time: Jan 30, 2020 at 12:14 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -87,6 +87,13 @@ CREATE TABLE `clients` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `domain`, `driver`, `title`, `server_key`, `secret`, `region`, `user_id`, `updated_at`, `created_at`) VALUES
+(2, NULL, 'smtp', 'testing', 'qsqwsqws', '201307', 'up', 1, '2020-01-30 08:59:51', '2020-01-30 08:59:51');
 
 -- --------------------------------------------------------
 
@@ -202,22 +209,6 @@ CREATE TABLE `listings` (
 
 INSERT INTO `listings` (`id`, `title`, `user_id`, `created_by`, `updated_at`, `created_at`) VALUES
 (81, 'First List', 1, 7, '2020-01-30 07:18:04', '2020-01-30 07:18:04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mailguns`
---
-
-CREATE TABLE `mailguns` (
-  `id` int(11) NOT NULL,
-  `driver` varchar(112) NOT NULL,
-  `domain` varchar(255) NOT NULL,
-  `secret` text NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -577,12 +568,6 @@ ALTER TABLE `listings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mailguns`
---
-ALTER TABLE `mailguns`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -687,7 +672,7 @@ ALTER TABLE `campaigns`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `emaillists`
@@ -718,12 +703,6 @@ ALTER TABLE `jobs`
 --
 ALTER TABLE `listings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
-
---
--- AUTO_INCREMENT for table `mailguns`
---
-ALTER TABLE `mailguns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `messages`

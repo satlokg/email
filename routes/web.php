@@ -63,6 +63,7 @@ Route::get('/campaign-send-detail', 'user\CampaignController@sendingEmail')->nam
 Route::get('/users', 'user\UserController@index')->name('users');
 Route::get('/users/add', 'user\UserController@addUser')->name('users.add');
 Route::post('/users/register', 'user\UserController@register')->name('users.register');
+Route::get('/users/detail/{id}', 'user\UserController@detail')->name('users.detail');
 
 //server
 Route::get('/server', 'user\ServerController@index')->name('server');

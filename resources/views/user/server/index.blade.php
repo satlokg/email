@@ -19,12 +19,12 @@
  @section('bread')
  <section class="content-header">
       <h1>
-        Campaign
+        Mail Server
       
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
-        <li class="active">CampaignTemplates</li>
+        <li class="active">Mail Server</li>
         <li class="active">Add</li>
       </ol>
 @endsection
@@ -38,7 +38,7 @@
             @csrf
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Create Campaign Templates</h3>
+              <h3 class="box-title">Mail Server Detail</h3>
               @include('user.server.timeline')
             </div>
             <!-- /.box-header -->
@@ -46,11 +46,11 @@
               <div class="row">
                 
                 <!-- /.col -->
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Quick Information</h3>
+                      <h3 class="box-title">SMTP Server Detail</h3>
 
                     </div>
                     <!-- /.box-header -->
@@ -61,12 +61,17 @@
                           <tr class="bg-yellow">
                             <th>#</th>
                             <th>Name</th>
-                            <th>EmailId</th>
                             <th></th>
                           </tr>
                           </thead>
                           <tbody>
-                          
+                          @foreach($servers as $key=>$server)
+                            <tr>
+                              <td>{{$key+1}}</td>
+                              <td>{{$server->title}}</td>
+                              <td></td>
+                            </tr>
+                          @endforeach
                           </tbody>
                           
                         </table>
@@ -78,7 +83,42 @@
                     <!-- /.col -->
                   </div>
           
+                  <div class="col-md-6">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Client Server Detail</h3>
 
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                      <div class="box-body">
+                       <table class="table table-bordered table-striped">
+                          <thead>
+                          <tr class="bg-yellow">
+                            <th>#</th>
+                            <th>Name</th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          @foreach($clients as $key=>$client)
+                            <tr>
+                              <td>{{$key+1}}</td>
+                              <td>{{$client->title}}</td>
+                              <td></td>
+                            </tr>
+                          @endforeach
+                          </tbody>
+                          
+                        </table>
+                       
+                      </div>
+                       
+              <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
              
               <!-- /.row -->
             </div>

@@ -79,4 +79,12 @@ class UserController extends Controller
         return $user;
         
     }
+
+    public function detail($id)
+    {
+        $id = decrypt($id,'vipra');
+        $user = User::find($id);
+       // dd($user->servers);
+        return view('user.user.detail', compact('user'));
+    }
 }

@@ -18,7 +18,8 @@ class ServerController extends Controller
     public function index()
     {
         $servers = Server::server()->get(); //dd($server);
-        return view('user.server.index',compact('servers'));
+        $clients = Client::server()->get();
+        return view('user.server.index',compact('servers','clients'));
     }
     public function addServerClient()
     {	$servers = Client::server()->get();

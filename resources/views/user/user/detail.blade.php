@@ -19,12 +19,12 @@
  @section('bread')
  <section class="content-header">
       <h1>
-        Campaign
+        User Detail ({{$user->name}} [{{$user->roles[0]->name}}])
       
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
-        <li class="active">CampaignTemplates</li>
+        <li class="active">User Detail</li>
         <li class="active">Add</li>
       </ol>
 @endsection
@@ -46,47 +46,63 @@
               <div class="row">
                 
                 <!-- /.col -->
-                <div class="col-md-12">
+                <div class="col-md-8">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Quick Information</h3>
+                      <h3 class="box-title">General Information</h3>
 
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                       <table class="table table-bordered table-striped">
-                          <thead>
-                          <tr class="bg-yellow">
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>EmailId</th>
-                            <th></th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          @foreach($users as $key=>$user)
-                          <tr>
-                            <th>{{$key+1}}</th>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>
-                              <a href="{{route('users.detail',['id'=>encrypt($user->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a>
-                            </td>
-                          </tr>
-                          @endforeach
-                          </tbody>
-                          
-                        </table>
+                       
                        
                       </div>
-                       
               <!-- /.box -->
                     </div>
                     <!-- /.col -->
                   </div>
-          
+                  <div class="col-md-4">
+                  <!-- general form elements -->
+                   <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Team</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Campaign</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Smtp Server</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Client Server</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+
+                  </div>
 
              
               <!-- /.row -->
