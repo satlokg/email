@@ -15,6 +15,13 @@ class Team extends Model
     {
       return $this->belongsToMany('App\User','user_team');
     }
+    public function campaigns(){
+        return $this->belongsToMany('App\Models\Campaign','team_campaign');
+    }
+
+    public function listings(){
+        return $this->belongsToMany('App\Models\Listing','team_listing');
+    }
 
 
     public function scopeUser($query)

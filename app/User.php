@@ -41,6 +41,15 @@ class User extends Authenticatable
     {
       return $this->belongsToMany('App\Models\Team','user_team');
     }
+    public function listing()
+    {
+      return $this->belongsToMany('App\Models\Listing','user_listing');
+    }
+
+    public function campaigns()
+    {
+      return $this->belongsToMany('App\Models\Campaign','user_campaign');
+    }
     /**
      * The attributes that should be cast to native types.
      *

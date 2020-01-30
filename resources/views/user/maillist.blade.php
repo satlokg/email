@@ -63,7 +63,29 @@
                           <label for="exampleInputPassword1">Choose File (Spreed Sheet)</label>
                           <input type="file" name="file" class="form-control" >
                         </div>
-                      
+                      <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select User') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control test" name="user[]"   multiple="multiple">
+                                  @foreach($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="team" class="col-md-4 col-form-label text-md-right">{{ __('Select Team') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="team" class="form-control test" name="team[]"   multiple="multiple">
+                                  @foreach($teams as $team)
+                                    <option value="{{$team->id}}">{{$team->teamname}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
                       
                        
                   </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2020 at 01:47 PM
+-- Generation Time: Jan 30, 2020 at 08:42 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -62,6 +62,13 @@ CREATE TABLE `campaigns` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `campaigns`
+--
+
+INSERT INTO `campaigns` (`id`, `user_id`, `subject`, `templates`, `template_url`, `updated_at`, `created_at`) VALUES
+(32, 7, 'welcome', '<p>welcome</p>', NULL, '2020-01-30 07:18:37', '2020-01-30 07:18:37');
+
 -- --------------------------------------------------------
 
 --
@@ -80,13 +87,6 @@ CREATE TABLE `clients` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `clients`
---
-
-INSERT INTO `clients` (`id`, `domain`, `driver`, `title`, `server_key`, `secret`, `region`, `user_id`, `updated_at`, `created_at`) VALUES
-(1, NULL, 'smtp', 'testing updated', 'qsqwsqws', 'h3sd+5dgwTZaAYen0S22VUBp+YWnSV0PS48BZ9NL', 'ap-south-1', 1, '2020-01-28 09:35:47', '2020-01-28 09:35:47');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,19 @@ INSERT INTO `emaillists` (`id`, `listing_id`, `name`, `email`, `status`, `update
 (121, 77, 'shivani.vipra@gmail.com', 'shivani.vipra@gmail.com', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29'),
 (122, 77, 'soumadeep.vipra@gmail.com', 'soumadeep.vipra@gmail.com', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29'),
 (123, 77, 'sushantchaudhary.vipra@gmail.com', 'sushantchaudhary.vipra@gmail.com', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29'),
-(124, 77, 'umashankar.vipra@gmail.com', 'umashankar.vipra@gmail.com', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29');
+(124, 77, 'umashankar.vipra@gmail.com', 'umashankar.vipra@gmail.com', 1, '2020-01-07 04:55:29', '2020-01-07 04:55:29'),
+(127, 78, 'raghavendra1.vipra@gmail.com', 'raghavendra1.vipra@gmail.com', 1, '2020-01-30 06:43:53', '2020-01-30 06:43:53'),
+(128, 78, 'rajkumarsaini.vipra@gmail.com', 'rajkumarsaini.vipra@gmail.com', 1, '2020-01-30 06:43:53', '2020-01-30 06:43:53'),
+(129, 78, 'chaitali.vipra@gmail.com', 'chaitali.vipra@gmail.com', 1, '2020-01-30 06:43:53', '2020-01-30 06:43:53'),
+(140, 79, 'raghavendra1.vipra@gmail.com', 'raghavendra1.vipra@gmail.com', 1, '2020-01-30 06:44:57', '2020-01-30 06:44:57'),
+(141, 79, 'rajkumarsaini.vipra@gmail.com', 'rajkumarsaini.vipra@gmail.com', 1, '2020-01-30 06:44:57', '2020-01-30 06:44:57'),
+(142, 79, 'chaitali.vipra@gmail.com', 'chaitali.vipra@gmail.com', 1, '2020-01-30 06:44:57', '2020-01-30 06:44:57'),
+(153, 80, 'raghavendra1.vipra@gmail.com', 'raghavendra1.vipra@gmail.com', 1, '2020-01-30 07:08:42', '2020-01-30 07:08:42'),
+(154, 80, 'rajkumarsaini.vipra@gmail.com', 'rajkumarsaini.vipra@gmail.com', 1, '2020-01-30 07:08:42', '2020-01-30 07:08:42'),
+(155, 80, 'chaitali.vipra@gmail.com', 'chaitali.vipra@gmail.com', 1, '2020-01-30 07:08:42', '2020-01-30 07:08:42'),
+(166, 81, 'raghavendra1.vipra@gmail.com', 'raghavendra1.vipra@gmail.com', 1, '2020-01-30 07:18:05', '2020-01-30 07:18:05'),
+(167, 81, 'rajkumarsaini.vipra@gmail.com', 'rajkumarsaini.vipra@gmail.com', 1, '2020-01-30 07:18:05', '2020-01-30 07:18:05'),
+(168, 81, 'chaitali.vipra@gmail.com', 'chaitali.vipra@gmail.com', 1, '2020-01-30 07:18:05', '2020-01-30 07:18:05');
 
 -- --------------------------------------------------------
 
@@ -179,9 +191,17 @@ CREATE TABLE `listings` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `listings`
+--
+
+INSERT INTO `listings` (`id`, `title`, `user_id`, `created_by`, `updated_at`, `created_at`) VALUES
+(81, 'First List', 1, 7, '2020-01-30 07:18:04', '2020-01-30 07:18:04');
 
 -- --------------------------------------------------------
 
@@ -347,8 +367,7 @@ CREATE TABLE `servers` (
 --
 
 INSERT INTO `servers` (`id`, `title`, `hostname`, `port`, `username`, `password`, `driver`, `encryption`, `updated_at`, `created_at`, `status`, `user_id`) VALUES
-(4, 'tiavik', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:29', '2020-01-07 11:36:37', 1, 1),
-(5, 'testing updated', 'mail.tiavik.com', 'ASA0:00', 'testing@yahoo.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:33', '2020-01-28 09:37:24', 1, 1);
+(4, 'tiavik', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:29', '2020-01-07 11:36:37', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -370,13 +389,47 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `user_id`, `teamname`, `created_by`, `updated_at`, `created_at`) VALUES
-(1, 1, 'fdz', 7, '2020-01-29 11:42:20', '2020-01-29 11:42:20'),
-(2, 1, 'fdz', 7, '2020-01-29 11:51:50', '2020-01-29 11:51:50'),
-(3, 1, 'fdz', 7, '2020-01-29 11:52:31', '2020-01-29 11:52:31'),
-(4, 1, 'asd', 7, '2020-01-29 11:52:41', '2020-01-29 11:52:41'),
-(5, 1, 'sde', 7, '2020-01-29 11:53:12', '2020-01-29 11:53:12'),
-(6, 1, 'team', 7, '2020-01-29 12:13:15', '2020-01-29 12:13:15'),
-(7, 1, 'dew', 7, '2020-01-29 12:18:44', '2020-01-29 12:18:44');
+(8, 1, 'Vipra Team', 7, '2020-01-30 07:16:48', '2020-01-30 07:16:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_campaign`
+--
+
+CREATE TABLE `team_campaign` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team_campaign`
+--
+
+INSERT INTO `team_campaign` (`id`, `team_id`, `campaign_id`, `status`) VALUES
+(2, 8, 32, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_listing`
+--
+
+CREATE TABLE `team_listing` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `listing_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team_listing`
+--
+
+INSERT INTO `team_listing` (`id`, `team_id`, `listing_id`, `status`) VALUES
+(4, 8, 81, 1);
 
 -- --------------------------------------------------------
 
@@ -403,8 +456,50 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `admin_id`, `created_at`, `updated_at`) VALUES
 (1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'fW2KTDhBH5PbV0sjOXqLOLy4q47QH7YKJSPQS01zgXSSuawOsRRlJoGrjSqw', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
-(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'ctRSpMvjN0ukjsvAzTdb1zgtuL3nh8oM02IOGVpmpGb4r3lr8zLScOHo1p0t', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
+(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'pgblP2a2oT1NDyDjzPY6eI8AWrw5L5rs47afyDbCEn7zIo3ezo6nyJvSWKoI', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
 (8, 'Avinash', 'avinash.vipra@gmail.com', NULL, NULL, '$2y$10$i4QiutlcKx3/.Sm8agX2gegh2CsOkodnznzKiP7fG7xIfwWEs0EE6', NULL, 1, '2020-01-28 12:41:16', '2020-01-28 12:41:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_campaign`
+--
+
+CREATE TABLE `user_campaign` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_campaign`
+--
+
+INSERT INTO `user_campaign` (`id`, `user_id`, `campaign_id`, `status`) VALUES
+(7, 7, 32, 1),
+(8, 8, 32, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_listing`
+--
+
+CREATE TABLE `user_listing` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `listing_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_listing`
+--
+
+INSERT INTO `user_listing` (`id`, `user_id`, `listing_id`, `status`) VALUES
+(7, 7, 81, 1),
+(8, 8, 81, 1);
 
 -- --------------------------------------------------------
 
@@ -424,8 +519,8 @@ CREATE TABLE `user_team` (
 --
 
 INSERT INTO `user_team` (`id`, `user_id`, `team_id`, `status`) VALUES
-(1, 7, 7, 1),
-(2, 8, 7, 1);
+(3, 7, 8, 1),
+(4, 8, 8, 1);
 
 --
 -- Indexes for dumped tables
@@ -537,9 +632,33 @@ ALTER TABLE `teams`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `team_campaign`
+--
+ALTER TABLE `team_campaign`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team_listing`
+--
+ALTER TABLE `team_listing`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_campaign`
+--
+ALTER TABLE `user_campaign`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_listing`
+--
+ALTER TABLE `user_listing`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -562,7 +681,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `campaigns`
 --
 ALTER TABLE `campaigns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -574,7 +693,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `emaillists`
 --
 ALTER TABLE `emaillists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT for table `emailrespnces`
@@ -598,7 +717,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `mailguns`
@@ -640,7 +759,19 @@ ALTER TABLE `servers`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `team_campaign`
+--
+ALTER TABLE `team_campaign`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `team_listing`
+--
+ALTER TABLE `team_listing`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -649,10 +780,22 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `user_campaign`
+--
+ALTER TABLE `user_campaign`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user_listing`
+--
+ALTER TABLE `user_listing`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `user_team`
 --
 ALTER TABLE `user_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

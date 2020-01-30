@@ -13,4 +13,12 @@ class Campaign extends Model
     public function emailresponces(){
         return $this->hasMany('App\Models\Emailrespnce');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User','user_campaign');
+    }
+
+    public function teams(){
+        return $this->belongsToMany('App\Models\Team','team_campaign');
+    }
 }

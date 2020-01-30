@@ -11,6 +11,7 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use App\Models\File;
+use App\Models\Team;
 use App\Models\Listing;
 use App\Models\Emaillist;
 use App\Imports\EmailImport;
@@ -42,7 +43,9 @@ class HomeController extends Controller
 
     public function mailList(){
         $listings = Listing::listing()->get();
-        return view('user.maillist',compact('listings'));
+        $users = User::user()->get();
+        $teams = Team::user()->get();
+        return view('user.maillist',compact('listings','users','teams'));
     }
 
     public function mailListPost(Request $r){
@@ -52,10 +55,18 @@ class HomeController extends Controller
         ]);
         if($r->hasfile('file'))
          {
-              $list=Listing::Create([
-                'title'=>$r->title,
-                'user_id'=>Auth::user()->id
-              ]);
+              $list= new Listing();
+              $list->title=$r->title;
+              if(Auth::user()->admin_id != null){
+                $user_id=Auth::user()->admin_id;
+              }else{
+                $user_id=Auth::user()->id;
+              }
+              $list->user_id=$user_id;
+              $list->created_by=Auth::user()->id;
+              $list->save();
+              $list->users()->sync($r->user);
+              $list->teams()->sync($r->team);
               Excel::import(new EmailImport($list->id),request()->file('file'));
               Emaillist::whereNull('email')->delete();
               return back();

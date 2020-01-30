@@ -13,7 +13,9 @@ use App\Jobs\SendEmailJob;
 use App\Models\Emailrespnce;
 use App\Models\Listing;
 use App\Models\File;
+use App\Models\Team;
 use Illuminate\Support\Facades\Mail;
+use App\User;
 use Config;
 class CampaignController extends Controller
 {
@@ -24,8 +26,9 @@ class CampaignController extends Controller
     }
 
     public function campaign(){
-
-        return view('user.campaign.campaign');
+        $users = User::user()->get(); 
+        $teams = Team::user()->get();
+        return view('user.campaign.campaign', compact('users','teams'));
     }
 
     public function campaignPost(Request $r){ //dd($r->all());
@@ -52,6 +55,8 @@ class CampaignController extends Controller
         $campaign->subject= $r->subject;
         $campaign->user_id=Auth::user()->id;
         $campaign->save();
+        $campaign->users()->sync($r->user);
+        $campaign->teams()->sync($r->team);
         if($campaign){
             $notification = array(
                         'message' => 'Templates Aded', 

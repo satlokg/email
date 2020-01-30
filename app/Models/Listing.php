@@ -22,7 +22,13 @@ class Listing extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+    public function users(){
+        return $this->belongsToMany('App\User','user_listing');
+    }
 
+    public function teams(){
+        return $this->belongsToMany('App\Models\Team','team_listing');
+    }
      public function emaillists(){
 
     	return $this->hasMany(Emaillist::class);

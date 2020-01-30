@@ -46,7 +46,7 @@
               <div class="row">
                 
                 <!-- /.col -->
-                <div class="col-md-12">
+                <div class="col-md-8">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
@@ -75,7 +75,47 @@
                 </div>
                 <!-- /.col -->
               </div>
-          
+
+              <div class="col-md-4">
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Assign To User</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                      <div class="box-body">
+                                            
+                      <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Select User') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control test" name="user[]"   multiple="multiple">
+                                  @foreach($users as $user)
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="team" class="col-md-4 col-form-label text-md-right">{{ __('Select Team') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="team" class="form-control test" name="team[]"   multiple="multiple">
+                                  @foreach($teams as $team)
+                                    <option value="{{$team->id}}">{{$team->teamname}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                        </div>
+                                        
+                      </div>
+                <!-- /.box -->
+                      </div>
+                      <!-- /.col -->
+                    </div>
+                
 
              
               <!-- /.row -->
@@ -107,5 +147,11 @@
 <script>
  CKEDITOR.replace( 'editor1' );
 </script>
-
+<script>
+(function($) {
+    $(function() {
+        window.fs_test = $('.test').fSelect();
+    });
+})(jQuery);
+</script>
 @endsection
