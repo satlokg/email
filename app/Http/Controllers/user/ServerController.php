@@ -67,4 +67,20 @@ class ServerController extends Controller
         }
          return redirect()->back()->with($notification);
     }
+
+    public function smtpdetail($id)
+    {
+        $id = decrypt($id,'vipra');
+        $server = Server::find($id);
+       // dd($user->servers);
+        return view('user.server.smtpdetail', compact('server'));
+    }
+
+    public function clientdetail($id)
+    {
+        $id = decrypt($id,'vipra');
+        $client = Client::find($id);
+       // dd($user->servers);
+        return view('user.server.clientdetail', compact('client'));
+    }
 }

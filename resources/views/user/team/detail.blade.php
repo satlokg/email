@@ -19,13 +19,13 @@
  @section('bread')
  <section class="content-header">
       <h1>
-        Team
+        Team Detail ({{$team->teamname}})
       
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> User</a></li>
-        <li class="active">Team</li>
-        <li class="active">List</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Team</a></li>
+        <li class="active">Team Detail</li>
+        <li class="active">Add</li>
       </ol>
 @endsection
 
@@ -38,7 +38,7 @@
             @csrf
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Team List</h3>
+              <h3 class="box-title">Team Details</h3>
               @include('user.team.timeline')
             </div>
             <!-- /.box-header -->
@@ -46,45 +46,63 @@
               <div class="row">
                 
                 <!-- /.col -->
-                <div class="col-md-12">
+                <div class="col-md-8">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Quick Information</h3>
+                      <h3 class="box-title">General Information</h3>
 
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                       <table class="table table-bordered table-striped">
-                          <thead>
-                          <tr class="bg-yellow">
-                            <th>#</th>
-                            <th>Team Name</th>
-                            <th></th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                            @foreach($teams as $key=>$team)
-                              <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$team->teamname}}</td>
-                                <td>
-                                  <a href="{{route('team.detail',['id'=>encrypt($team->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a>
-                                </td>
-                              </tr>
-                            @endforeach
-                          </tbody>
-                          
-                        </table>
+                       
                        
                       </div>
-                       
               <!-- /.box -->
                     </div>
                     <!-- /.col -->
                   </div>
-          
+                  <div class="col-md-4">
+                  <!-- general form elements -->
+                   <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Users</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Campaign</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Smtp Server</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+                    <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Client Server</h3>
+                    </div>
+                      <div class="box-body">
+                       
+                      </div>
+                    </div>
+
+
+                  </div>
 
              
               <!-- /.row -->

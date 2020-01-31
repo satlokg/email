@@ -106,7 +106,7 @@
                   <td>{{$server->title}}</td>
                   <td>{{$server->driver}}</td>
                   <td>{{$server->region}}</td>
-                  <td></td>
+                  <td><a href="{{route('user.client.detail',['id'=>encrypt($server->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a></td>
                   
                    </tr>
                @endforeach

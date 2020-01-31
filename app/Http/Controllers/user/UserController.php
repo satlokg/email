@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::users()->get();
+        $users = User::user()->get();
         return view('user.user.index',compact('users'));
     }
     public function addUser()
@@ -68,16 +68,18 @@ class UserController extends Controller
    
     protected function create(array $data)
     {
-        $user= User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'admin_id' => Auth::user()->id,
-        ]);
+        $user= new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        if(Auth::user()->admin_id != null){
+            $user->admin_id = Auth::user()->admin_id;
+        }else{
+            $user->admin_id = Auth::user()->id;
+        }
+        $user->save(); 
         $user->roles()->attach(Role::where('name', $data['role'])->first());
-        //$user->notify(new MailNotification); 
         return $user;
-        
     }
 
     public function detail($id)

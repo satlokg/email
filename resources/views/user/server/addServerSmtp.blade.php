@@ -112,7 +112,7 @@
                   <tr class="bg-green">
                   <td>{{$server->title}}</td>
                   <td>{{$server->hostname}}</td>
-                  <td></td>
+                  <td><a href="{{route('user.smtp.detail',['id'=>encrypt($server->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a></td>
                   
                    </tr>
                @endforeach

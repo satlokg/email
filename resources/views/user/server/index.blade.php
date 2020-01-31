@@ -69,7 +69,7 @@
                             <tr>
                               <td>{{$key+1}}</td>
                               <td>{{$server->title}}</td>
-                              <td></td>
+                              <td><a href="{{route('user.smtp.detail',['id'=>encrypt($server->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a></td>
                             </tr>
                           @endforeach
                           </tbody>
@@ -106,7 +106,7 @@
                             <tr>
                               <td>{{$key+1}}</td>
                               <td>{{$client->title}}</td>
-                              <td></td>
+                              <td><a href="{{route('user.client.detail',['id'=>encrypt($client->id,'vipra')])}}" class="btn btn-sm btn-info">Detail</a></td>
                             </tr>
                           @endforeach
                           </tbody>

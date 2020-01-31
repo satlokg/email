@@ -46,4 +46,12 @@ class TeamController extends Controller
         }
         return redirect()->back()->with($notification);
     }
+
+    public function detail($id)
+    {
+        $id = decrypt($id,'vipra');
+        $team = Team::find($id);
+       // dd($user->servers);
+        return view('user.team.detail', compact('team'));
+    }
 }
