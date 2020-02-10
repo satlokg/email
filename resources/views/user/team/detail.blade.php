@@ -70,7 +70,26 @@
                       <h3 class="box-title">Users</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($team->users as $user)
+                            <li>{{$user->name}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $team->users ? $selecteduser=$team->users->pluck('id')->toArray() : $selecteduser=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Users:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="user_team[]">
+                                @foreach($users as $user)
+                              
+                                <option value="{{$user->id}}" {{in_array($user->id, $selecteduser) ? 'selected' : ''}}>{{$user->name}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 
@@ -134,5 +153,11 @@
 <script>
  CKEDITOR.replace( 'editor1' );
 </script>
-
+<script>
+(function($) {
+    $(function() {
+        window.fs_test = $('.test').fSelect();
+    });
+})(jQuery);
+</script>
 @endsection

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Notifications\MailNotification;
 use Hash;
 use Auth;
+use App\Models\Team;
+use App\Models\Campaign;
+use App\Models\Server;
+use App\Models\Client;
 
 class UserController extends Controller
 {
@@ -86,7 +90,12 @@ class UserController extends Controller
     {
         $id = decrypt($id,'vipra');
         $user = User::find($id);
-       // dd($user->servers);
-        return view('user.user.detail', compact('user'));
+        $teams = Team::user()->get();
+        $campaigns = Campaign::user()->get();
+        $servers = Server::server()->get();
+        $clients = Client::server()->get();
+        $roles=Role::all();
+         // dd($user->campaigns);
+        return view('user.user.detail', compact('user','teams','campaigns','servers','clients','roles'));
     }
 }

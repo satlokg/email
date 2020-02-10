@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2020 at 12:14 PM
+-- Generation Time: Feb 10, 2020 at 02:04 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -67,7 +67,8 @@ CREATE TABLE `campaigns` (
 --
 
 INSERT INTO `campaigns` (`id`, `user_id`, `subject`, `templates`, `template_url`, `updated_at`, `created_at`) VALUES
-(32, 7, 'welcome', '<p>welcome</p>', NULL, '2020-01-30 07:18:37', '2020-01-30 07:18:37');
+(32, 7, 'welcome', '<p>welcome</p>', NULL, '2020-01-30 07:18:37', '2020-01-30 07:18:37'),
+(33, 1, 'welcome', '<p>welvome</p>', NULL, '2020-02-10 10:40:09', '2020-02-10 10:40:09');
 
 -- --------------------------------------------------------
 
@@ -330,7 +331,8 @@ CREATE TABLE `role_user` (
 
 INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (4, 2, 7, NULL, NULL),
-(5, 3, 8, NULL, NULL);
+(5, 3, 8, NULL, NULL),
+(6, 1, 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -400,7 +402,8 @@ CREATE TABLE `team_campaign` (
 --
 
 INSERT INTO `team_campaign` (`id`, `team_id`, `campaign_id`, `status`) VALUES
-(2, 8, 32, 1);
+(2, 8, 32, 1),
+(3, 8, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -446,8 +449,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'fW2KTDhBH5PbV0sjOXqLOLy4q47QH7YKJSPQS01zgXSSuawOsRRlJoGrjSqw', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
-(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'pgblP2a2oT1NDyDjzPY6eI8AWrw5L5rs47afyDbCEn7zIo3ezo6nyJvSWKoI', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
+(1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'HAOUwqQBvEi9syD19oY9sOe25fsxLCfzX2um6wsfMnfHjndfRmKcu6ygxF2w', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
+(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'FjXNnnzPPMN1kXrP3gnLO5vwbaahtsry9OISfYnI4jG7w5B8Tl4XudLEKwzp', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
 (8, 'Avinash', 'avinash.vipra@gmail.com', NULL, NULL, '$2y$10$i4QiutlcKx3/.Sm8agX2gegh2CsOkodnznzKiP7fG7xIfwWEs0EE6', NULL, 1, '2020-01-28 12:41:16', '2020-01-28 12:41:16');
 
 -- --------------------------------------------------------
@@ -469,7 +472,22 @@ CREATE TABLE `user_campaign` (
 
 INSERT INTO `user_campaign` (`id`, `user_id`, `campaign_id`, `status`) VALUES
 (7, 7, 32, 1),
-(8, 8, 32, 1);
+(8, 8, 32, 1),
+(9, 7, 33, 1),
+(10, 8, 33, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_client`
+--
+
+CREATE TABLE `user_client` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -491,6 +509,19 @@ CREATE TABLE `user_listing` (
 INSERT INTO `user_listing` (`id`, `user_id`, `listing_id`, `status`) VALUES
 (7, 7, 81, 1),
 (8, 8, 81, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_server`
+--
+
+CREATE TABLE `user_server` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `server_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -641,9 +672,21 @@ ALTER TABLE `user_campaign`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_client`
+--
+ALTER TABLE `user_client`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_listing`
 --
 ALTER TABLE `user_listing`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_server`
+--
+ALTER TABLE `user_server`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -666,7 +709,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `campaigns`
 --
 ALTER TABLE `campaigns`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -726,7 +769,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `servers`
@@ -744,7 +787,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `team_campaign`
 --
 ALTER TABLE `team_campaign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `team_listing`
@@ -756,19 +799,31 @@ ALTER TABLE `team_listing`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_campaign`
 --
 ALTER TABLE `user_campaign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `user_client`
+--
+ALTER TABLE `user_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_listing`
 --
 ALTER TABLE `user_listing`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `user_server`
+--
+ALTER TABLE `user_server`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_team`

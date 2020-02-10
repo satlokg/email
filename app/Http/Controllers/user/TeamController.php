@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Team;
 use Auth;
 use App\User;
+use App\Models\Campaign;
+use App\Models\Server;
+use App\Models\Client;
 
 
 class TeamController extends Controller
@@ -52,6 +55,10 @@ class TeamController extends Controller
         $id = decrypt($id,'vipra');
         $team = Team::find($id);
        // dd($user->servers);
-        return view('user.team.detail', compact('team'));
+        $users = User::user()->get();
+        $campaigns = Campaign::user()->get();
+        $servers = Server::server()->get();
+        $clients = Client::server()->get();
+        return view('user.team.detail', compact('team','campaigns','servers','clients','users'));
     }
 }
