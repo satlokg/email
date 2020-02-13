@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Server;
 use App\Models\Client;
+use App\Models\Team;
+use App\User;
 use Auth;
 
 class ServerController extends Controller
@@ -72,15 +74,74 @@ class ServerController extends Controller
     {
         $id = decrypt($id,'vipra');
         $server = Server::find($id);
+        $teams = Team::user()->get();
+        $users = User::user()->get();
        // dd($user->servers);
-        return view('user.server.smtpdetail', compact('server'));
+        return view('user.server.smtpdetail', compact('server','users','teams'));
+    }
+    public function smtpupdate(Request $r){
+        //dd($r->all());
+        $server = Server::find($r->id);
+        $server->title = $r->title;
+        $server->hostname = $r->hostname;
+        $server->port = $r->port;
+        $server->username = $r->username;
+        $server->password = $r->password;
+        $server->driver = $r->driver;
+        $server->encryption = $r->encryption;
+        $server->save(); 
+        
+        $server->users()->sync($r->user_server);
+        $server->teams()->sync($r->team_server);
+        
+        if($server){
+            $notification = array(
+                        'message' => 'Server successfully Updated', 
+                        'alert-type' => 'success'
+                    );
+        }else{
+            $notification = array(
+                        'message' => 'Something Went Wrong', 
+                        'alert-type' => 'error'
+                    );
+        }
+        return redirect()->back()->with($notification);
     }
 
     public function clientdetail($id)
     {
         $id = decrypt($id,'vipra');
         $client = Client::find($id);
+        $teams = Team::user()->get();
+        $users = User::user()->get();
        // dd($user->servers);
-        return view('user.server.clientdetail', compact('client'));
+        return view('user.server.clientdetail', compact('client','users','teams'));
+    }
+
+    public function clientupdate(Request $r){
+        //dd($r->all());
+        $client = Client::find($r->id);
+        $client->title = $r->title;
+        $client->server_key = $r->server_key;
+        $client->secret = $r->secret;
+        $client->region = $r->region;
+        $client->driver = $r->driver;
+        $client->save(); 
+        
+        $client->users()->sync($r->user_client);
+        $client->teams()->sync($r->team_client);
+        
+        if($client){
+            $notification = array(
+                        'message' => 'Server successfully Updated', 
+                        'alert-type' => 'success'
+                    );
+        }else{
+            $notification = array(
+                        'message' => 'Something Went Wrong', 
+                        'alert-type' => 'error'
+                    );
+        }
+        return redirect()->back()->with($notification);
     }
 }

@@ -98,4 +98,31 @@ class UserController extends Controller
          // dd($user->campaigns);
         return view('user.user.detail', compact('user','teams','campaigns','servers','clients','roles'));
     }
+    public function update(Request $r){
+        //dd($r->all());
+        $user = User::find($r->id);
+        if($r->password != ''){
+           $user->password = Hash::make($r->password);
+        }
+        $user->name = $r->name;
+        $user->save(); 
+        $user->roles()->sync(Role::where('name', $r->role)->first());
+        $user->teams()->sync($r->user_team);
+        $user->campaigns()->sync($r->user_campaign);
+        $user->servers()->sync($r->user_server);
+        $user->clients()->sync($r->user_client);
+        
+        if($user){
+            $notification = array(
+                        'message' => 'User successfully Updated', 
+                        'alert-type' => 'success'
+                    );
+        }else{
+            $notification = array(
+                        'message' => 'Something Went Wrong', 
+                        'alert-type' => 'error'
+                    );
+        }
+        return redirect()->back()->with($notification);
+    }
 }

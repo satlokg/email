@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2020 at 02:04 PM
+-- Generation Time: Feb 13, 2020 at 02:00 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.2.20
 
@@ -94,7 +94,7 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `domain`, `driver`, `title`, `server_key`, `secret`, `region`, `user_id`, `updated_at`, `created_at`) VALUES
-(2, NULL, 'smtp', 'testing', 'qsqwsqws', '201307', 'up', 1, '2020-01-30 08:59:51', '2020-01-30 08:59:51');
+(2, NULL, 'smtp', 'testing 1', 'qsqwsqws', '201307', 'up', 1, '2020-02-13 09:39:28', '2020-01-30 08:59:51');
 
 -- --------------------------------------------------------
 
@@ -188,6 +188,14 @@ CREATE TABLE `jobs` (
   `available_at` int(10) UNSIGNED NOT NULL,
   `created_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `queue`, `payload`, `attempts`, `reserved_at`, `available_at`, `created_at`) VALUES
+(1, 'default', '{\"displayName\":\"App\\\\Jobs\\\\SendEmailJob\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"delay\":null,\"timeout\":null,\"timeoutAt\":null,\"data\":{\"commandName\":\"App\\\\Jobs\\\\SendEmailJob\",\"command\":\"O:21:\\\"App\\\\Jobs\\\\SendEmailJob\\\":10:{s:6:\\\"emails\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:20:\\\"App\\\\Models\\\\Emaillist\\\";s:2:\\\"id\\\";a:3:{i:0;i:166;i:1;i:167;i:2;i:168;}s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:8:\\\"campaign\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:19:\\\"App\\\\Models\\\\Campaign\\\";s:2:\\\"id\\\";i:33;s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:10:\\\"listing_id\\\";a:1:{i:0;s:2:\\\"81\\\";}s:6:\\\"\\u0000*\\u0000job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:5:\\\"delay\\\";N;s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1581589807, 1581589807),
+(2, 'default', '{\"displayName\":\"App\\\\Jobs\\\\SendEmailJob\",\"job\":\"Illuminate\\\\Queue\\\\CallQueuedHandler@call\",\"maxTries\":null,\"delay\":null,\"timeout\":null,\"timeoutAt\":null,\"data\":{\"commandName\":\"App\\\\Jobs\\\\SendEmailJob\",\"command\":\"O:21:\\\"App\\\\Jobs\\\\SendEmailJob\\\":10:{s:6:\\\"emails\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:20:\\\"App\\\\Models\\\\Emaillist\\\";s:2:\\\"id\\\";a:3:{i:0;i:166;i:1;i:167;i:2;i:168;}s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:8:\\\"campaign\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":4:{s:5:\\\"class\\\";s:19:\\\"App\\\\Models\\\\Campaign\\\";s:2:\\\"id\\\";i:33;s:9:\\\"relations\\\";a:0:{}s:10:\\\"connection\\\";s:5:\\\"mysql\\\";}s:10:\\\"listing_id\\\";a:1:{i:0;s:2:\\\"81\\\";}s:6:\\\"\\u0000*\\u0000job\\\";N;s:10:\\\"connection\\\";N;s:5:\\\"queue\\\";N;s:15:\\\"chainConnection\\\";N;s:10:\\\"chainQueue\\\";N;s:5:\\\"delay\\\";N;s:7:\\\"chained\\\";a:0:{}}\"}}', 0, NULL, 1581591560, 1581591560);
 
 -- --------------------------------------------------------
 
@@ -330,9 +338,9 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`id`, `role_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 2, 7, NULL, NULL),
 (5, 3, 8, NULL, NULL),
-(6, 1, 9, NULL, NULL);
+(6, 1, 9, NULL, NULL),
+(8, 2, 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -360,7 +368,7 @@ CREATE TABLE `servers` (
 --
 
 INSERT INTO `servers` (`id`, `title`, `hostname`, `port`, `username`, `password`, `driver`, `encryption`, `updated_at`, `created_at`, `status`, `user_id`) VALUES
-(4, 'tiavik', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-01-28 10:05:29', '2020-01-07 11:36:37', 1, 1);
+(4, 'tiavik 1', 'mail.tiavik.com', '465', 'info@tiavik.com', '*963./8520', 'smtp', 'ssl', '2020-02-13 09:27:52', '2020-01-07 11:36:37', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -382,7 +390,7 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `user_id`, `teamname`, `created_by`, `updated_at`, `created_at`) VALUES
-(8, 1, 'Vipra Team', 7, '2020-01-30 07:16:48', '2020-01-30 07:16:48');
+(8, 1, 'Vipra Team 1', 7, '2020-02-13 09:03:25', '2020-01-30 07:16:48');
 
 -- --------------------------------------------------------
 
@@ -402,8 +410,27 @@ CREATE TABLE `team_campaign` (
 --
 
 INSERT INTO `team_campaign` (`id`, `team_id`, `campaign_id`, `status`) VALUES
-(2, 8, 32, 1),
 (3, 8, 33, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_client`
+--
+
+CREATE TABLE `team_client` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team_client`
+--
+
+INSERT INTO `team_client` (`id`, `team_id`, `client_id`, `status`) VALUES
+(2, 8, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -424,6 +451,26 @@ CREATE TABLE `team_listing` (
 
 INSERT INTO `team_listing` (`id`, `team_id`, `listing_id`, `status`) VALUES
 (4, 8, 81, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_server`
+--
+
+CREATE TABLE `team_server` (
+  `id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `server_id` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team_server`
+--
+
+INSERT INTO `team_server` (`id`, `team_id`, `server_id`, `status`) VALUES
+(2, 8, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -449,8 +496,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `admin_id`, `created_at`, `updated_at`) VALUES
-(1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'HAOUwqQBvEi9syD19oY9sOe25fsxLCfzX2um6wsfMnfHjndfRmKcu6ygxF2w', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
-(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$auNXEvdwHuAXOtsm.GOtk.xUKJ9NN45hPY304M/VuPn0nroheXTFG', 'FjXNnnzPPMN1kXrP3gnLO5vwbaahtsry9OISfYnI4jG7w5B8Tl4XudLEKwzp', 1, '2020-01-28 12:40:36', '2020-01-28 12:40:36'),
+(1, 'satlok', 'satlok.vipra@gmail.com', NULL, 1, '$2y$10$betOmZHlpuXsRSfbRN50MuDzIckwFBMBzUJI.eMaD2udp7uM/lqN6', 'q3DhqNZNzBpLXoLX7jUIvOL6qJaJTrZLTbNUafDd7yGkbWXtuDA5hRAuIVlN', NULL, '2020-01-06 01:26:54', '2020-01-06 01:26:54'),
+(7, 'anubhav kumar', 'anubhav.vipra@gmail.com', NULL, NULL, '$2y$10$./xoLuDNdpPJfu81sx6KXOd8cyl2M9cMIZTwtks0RjolQUe1hMF5a', 'sRU4gb2L3fDswh8wY82c9eCBYhR5PpxJxOyk0wRjWBAvXS5LKIOreWWjFuJL', 1, '2020-01-28 12:40:36', '2020-02-13 08:47:05'),
 (8, 'Avinash', 'avinash.vipra@gmail.com', NULL, NULL, '$2y$10$i4QiutlcKx3/.Sm8agX2gegh2CsOkodnznzKiP7fG7xIfwWEs0EE6', NULL, 1, '2020-01-28 12:41:16', '2020-01-28 12:41:16');
 
 -- --------------------------------------------------------
@@ -471,10 +518,9 @@ CREATE TABLE `user_campaign` (
 --
 
 INSERT INTO `user_campaign` (`id`, `user_id`, `campaign_id`, `status`) VALUES
-(7, 7, 32, 1),
 (8, 8, 32, 1),
-(9, 7, 33, 1),
-(10, 8, 33, 1);
+(10, 8, 33, 1),
+(11, 7, 33, 1);
 
 -- --------------------------------------------------------
 
@@ -488,6 +534,14 @@ CREATE TABLE `user_client` (
   `client_id` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_client`
+--
+
+INSERT INTO `user_client` (`id`, `user_id`, `client_id`, `status`) VALUES
+(2, 7, 2, 1),
+(3, 8, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -523,6 +577,14 @@ CREATE TABLE `user_server` (
   `status` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `user_server`
+--
+
+INSERT INTO `user_server` (`id`, `user_id`, `server_id`, `status`) VALUES
+(2, 7, 4, 1),
+(3, 8, 4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -541,8 +603,7 @@ CREATE TABLE `user_team` (
 --
 
 INSERT INTO `user_team` (`id`, `user_id`, `team_id`, `status`) VALUES
-(3, 7, 8, 1),
-(4, 8, 8, 1);
+(5, 7, 8, 1);
 
 --
 -- Indexes for dumped tables
@@ -654,9 +715,21 @@ ALTER TABLE `team_campaign`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `team_client`
+--
+ALTER TABLE `team_client`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `team_listing`
 --
 ALTER TABLE `team_listing`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team_server`
+--
+ALTER TABLE `team_server`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -739,7 +812,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `listings`
@@ -769,7 +842,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_user`
 --
 ALTER TABLE `role_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `servers`
@@ -790,10 +863,22 @@ ALTER TABLE `team_campaign`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `team_client`
+--
+ALTER TABLE `team_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `team_listing`
 --
 ALTER TABLE `team_listing`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `team_server`
+--
+ALTER TABLE `team_server`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -805,13 +890,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_campaign`
 --
 ALTER TABLE `user_campaign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_client`
 --
 ALTER TABLE `user_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_listing`
@@ -823,13 +908,13 @@ ALTER TABLE `user_listing`
 -- AUTO_INCREMENT for table `user_server`
 --
 ALTER TABLE `user_server`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_team`
 --
 ALTER TABLE `user_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

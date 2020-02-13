@@ -34,8 +34,9 @@
 
       <div class="row">
         <div class="col-md-12">
-           <form method="POST" action="{{ route('campaign.post') }}" enctype="multipart/form-data">
+           <form method="POST" action="{{ route('user.client.update') }}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="id" value="{{$client->id}}">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Client Details</h3>
@@ -56,7 +57,26 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                       
+                       <div class="form-group">
+                          <label for="exampleInputPassword1">Title</label>
+                          <input type="text" name="title" class="form-control" id="exampleInputPassword1" placeholder="Host Name" value="{{$client->title}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Driver</label>
+                          <input type="text" name="driver" class="form-control" id="exampleInputPassword1" placeholder="Host Name" value="{{$client->driver}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Key</label>
+                          <input type="text" name="server_key" class="form-control" id="exampleInputPassword1" placeholder="Host Name" value="{{$client->server_key}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Secret/Token</label>
+                          <input type="text" name="secret" class="form-control" placeholder="Port" value="{{$client->secret}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Resion</label>
+                          <input type="text" name="region" class="form-control" placeholder="Username" value="{{$client->region}}">
+                        </div>
                        
                       </div>
               <!-- /.box -->
@@ -70,16 +90,54 @@
                       <h3 class="box-title">Users</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($client->users as $user)
+                            <li>{{$user->name}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $client->users ? $selecteduser=$client->users->pluck('id')->toArray() : $selecteduser=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Users:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="user_client[]">
+                                @foreach($users as $user)
+                              
+                                <option value="{{$user->id}}" {{in_array($user->id, $selecteduser) ? 'selected' : ''}}>{{$user->name}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 
                     <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Campaign</h3>
+                      <h3 class="box-title">Team</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($client->teams as $team)
+                            <li>{{$team->teamname}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $client->teams ? $selectedteam=$client->teams->pluck('id')->toArray() : $selectedteam=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Team:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="team_client[]">
+                                @foreach($teams as $team)
+                              
+                                <option value="{{$team->id}}" {{in_array($team->id, $selectedteam) ? 'selected' : ''}}>{{$team->teamname}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 
@@ -118,5 +176,11 @@
 <script>
  CKEDITOR.replace( 'editor1' );
 </script>
-
+<script>
+(function($) {
+    $(function() {
+        window.fs_test = $('.test').fSelect();
+    });
+})(jQuery);
+</script>
 @endsection

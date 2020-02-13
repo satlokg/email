@@ -24,4 +24,10 @@ class Server extends Model
     public function users(){
         return $this->belongsToMany('App\User','user_server');
     }
+
+    public function teams(){
+        return $this->belongsToMany('App\Models\Team','team_server');
+    }
+
+   
 }

@@ -61,4 +61,28 @@ class TeamController extends Controller
         $clients = Client::server()->get();
         return view('user.team.detail', compact('team','campaigns','servers','clients','users'));
     }
+
+    public function update(Request $r){
+       // dd($r->all());
+        $team = Team::find($r->id);
+        $team->teamname = $r->teamname;
+        $team->save(); 
+        $team->users()->sync($r->user_team);
+        $team->campaigns()->sync($r->team_campaign);
+        $team->servers()->sync($r->team_server);
+        $team->clients()->sync($r->team_client);
+        
+        if($team){
+            $notification = array(
+                        'message' => 'User successfully Updated', 
+                        'alert-type' => 'success'
+                    );
+        }else{
+            $notification = array(
+                        'message' => 'Something Went Wrong', 
+                        'alert-type' => 'error'
+                    );
+        }
+        return redirect()->back()->with($notification);
+    }
 }

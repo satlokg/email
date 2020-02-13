@@ -34,8 +34,9 @@
 
       <div class="row">
         <div class="col-md-12">
-           <form method="POST" action="{{ route('campaign.post') }}" enctype="multipart/form-data">
+           <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
             @csrf
+             <input type="hidden" name="id" value="{{$user->id}}">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Create Campaign Templates</h3>
@@ -88,7 +89,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -102,7 +103,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
                             </div>
                         </div>
 
@@ -118,13 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
+                       
                        
                       </div>
               <!-- /.box -->
@@ -231,7 +226,7 @@
                       </div>
                       <div class="box-footer">
                         @php
-                         $user->clients ? $selectedclient=$user->servers->pluck('id')->toArray() : $selectedclient=[];
+                         $user->clients ? $selectedclient=$user->clients->pluck('id')->toArray() : $selectedclient=[];
                          @endphp
                            <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Team:</label>

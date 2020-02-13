@@ -22,4 +22,7 @@ class Client extends Model
     public function users(){
         return $this->belongsToMany('App\User','user_client');
     }
+    public function teams(){
+        return $this->belongsToMany('App\Models\Team','team_client');
+    }
 }

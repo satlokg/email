@@ -64,6 +64,7 @@ Route::get('/users', 'user\UserController@index')->name('users');
 Route::get('/users/add', 'user\UserController@addUser')->name('users.add');
 Route::post('/users/register', 'user\UserController@register')->name('users.register');
 Route::get('/users/detail/{id}', 'user\UserController@detail')->name('users.detail');
+Route::post('/users/update', 'user\UserController@update')->name('users.update');
 
 //server
 Route::get('/server', 'user\ServerController@index')->name('server');
@@ -72,14 +73,16 @@ Route::get('/server/add/smtp', 'user\ServerController@addServerSmtp')->name('ser
 Route::post('/smtp-server', 'user\ServerController@smtpserverPost')->name('user.smtp.post');
 Route::post('/client-server', 'user\ServerController@clintserverPost')->name('user.client.post');
 Route::get('/smtp-server/detail/{id}', 'user\ServerController@smtpdetail')->name('user.smtp.detail');
+Route::post('/smtp-server/update', 'user\ServerController@smtpupdate')->name('user.smtp.update');
 Route::get('/client-server/detail/{id}', 'user\ServerController@clientdetail')->name('user.client.detail');
+Route::post('/client-server/update', 'user\ServerController@clientupdate')->name('user.client.update');
 
 //team
 Route::get('/team', 'user\TeamController@index')->name('team');
 Route::get('/team/add', 'user\TeamController@add')->name('team.add');
 Route::post('/team/add/post', 'user\TeamController@post')->name('team.add.post');
 Route::get('/team/detail/{id}', 'user\TeamController@detail')->name('team.detail');
-
+Route::post('/team/update', 'user\TeamController@update')->name('team.update');
 
 Route::get('/notify', 'HomeController@notify')->name('notify');
 

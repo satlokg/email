@@ -14,6 +14,7 @@ use App\Models\Emailrespnce;
 use App\Models\Listing;
 use App\Models\File;
 use App\Models\Team;
+use App\Models\Client;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use Config;
@@ -78,16 +79,16 @@ class CampaignController extends Controller
         return view('user.campaign.detail', compact('campaign','servers','listings'));
     }
     public function campaignList(){ 
-    	$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);
-        return view('user.campaign.list', compact('campaigns'));
+    	//$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);
+        return view('user.campaign.list');
     }
 
     public function sendEmail(Request $r){  //dd(array_values($r->mailList));
     	$campaign = Campaign::find($r->campaign_id);
-    	$server = Server::find($r->servers);
+        $srv = explode('-',decrypt($r->servers,'server'));
     	$emails = Emaillist::whereIn('listing_id',$r->mailList)->where('status',1)->get();
-    	if($server){
-            if($server->driver == 'smtp'){
+    	if($srv[1] == 'smtp'){
+            $server = Server::find($srv[0]);
             	Config::set('mail.driver', $server->driver); 
             	Config::set('mail.host', $server->hostname);
             	Config::set('mail.port', $server->port);
@@ -97,13 +98,13 @@ class CampaignController extends Controller
             	Config::set('mail.from.name', $r->name);
             	Config::set('mail.from.address', $r->from);
             }
-            if($server->driver == 'ses'){
+            if($srv[1] == 'client'){
+                $server = Client::find($srv[0]);
                 Config::set('mail.driver', $server->driver);
                 Config::set('services.ses.key', $server->key); 
                 Config::set('services.ses.secret', $server->secret); 
                 Config::set('services.ses.region', $server->region); 
                 }
-        }
 
         $res = dispatch(new SendEmailJob($emails,$campaign,$r->mailList));
         // $res = Emailrespnce::where('campaign_id',$campaign->id)->last();

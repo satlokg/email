@@ -34,7 +34,7 @@
 
       <div class="row">
         <div class="col-md-12">
-           <form method="POST" action="{{ route('campaign.post') }}" enctype="multipart/form-data">
+           <form method="POST" action="{{ route('team.update') }}" enctype="multipart/form-data">
             @csrf
           <div class="box">
             <div class="box-header with-border">
@@ -56,7 +56,23 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                       <div class="box-body">
-                       
+                       <form method="POST" action="{{ route('team.add.post') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $team->id }}">
+                        <div class="form-group row">
+                            <label for="teamname" class="col-md-4 col-form-label text-md-right">{{ __('Team Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="teamname" type="text" class="form-control @error('teamname') is-invalid @enderror" name="teamname" value="{{ $team->teamname }}" required autocomplete="teamname" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </form>
                        
                       </div>
               <!-- /.box -->
@@ -98,7 +114,26 @@
                       <h3 class="box-title">Campaign</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($team->campaigns as $campaign)
+                            <li>{{$campaign->subject}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $team->campaigns ? $selectedcampaign=$team->campaigns->pluck('id')->toArray() : $selectedcampaign=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Campaign:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="team_campaign[]">
+                                @foreach($campaigns as $user)
+                              
+                                <option value="{{$user->id}}" {{in_array($user->id, $selectedcampaign) ? 'selected' : ''}}>{{$user->subject}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 
@@ -107,7 +142,26 @@
                       <h3 class="box-title">Smtp Server</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($team->servers as $server)
+                            <li>{{$server->title}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $team->servers ? $selectedserver=$team->servers->pluck('id')->toArray() : $selectedserver=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">SMTP:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="team_server[]">
+                                @foreach($servers as $server)
+                              
+                                <option value="{{$server->id}}" {{in_array($server->id, $selectedserver) ? 'selected' : ''}}>{{$server->title}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 
@@ -116,7 +170,26 @@
                       <h3 class="box-title">Client Server</h3>
                     </div>
                       <div class="box-body">
-                       
+                        <ol>
+                          @foreach($team->clients as $client)
+                            <li>{{$client->driver}}</li>
+                          @endforeach
+                        </ol>
+                         
+                      </div>
+                      <div class="box-footer">
+                        @php
+                         $team->clients ? $selectedclient=$team->clients->pluck('id')->toArray() : $selectedclient=[];
+                         @endphp
+                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Client:</label>
+                             <select class="form-control test" multiple="multiple" data-placeholder="Select User" style="width: 100%;" name="team_client[]">
+                                @foreach($clients as $client)
+                              
+                                <option value="{{$client->id}}" {{in_array($client->id, $selectedclient) ? 'selected' : ''}}>{{$client->driver}} </option>
+                                @endforeach
+                              </select>
+                          </div>
                       </div>
                     </div>
 

@@ -47,7 +47,7 @@
               <div class="row">
                 
                 <!-- /.col -->
-                <div class="col-md-6">
+                <div class="col-md-8">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
@@ -63,18 +63,34 @@
                 </div>
                 <!-- /.col -->
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
+                <div class="box box-primary">
+                <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">From Email</label>
+                  <input type="text" name="from" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">From Name</label>
+                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
+                </div>
+              </div>
+            </div>
                   <!-- general form elements -->
-              <div class="box box-primary">
+              <div class="box box-success box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Mailling List</h3>
+                <h3 class="box-title">By Indivisual</h3>
+                </div>
+
+                <div class="box-footer with-border">
+                  <h4 class="box-title">Mailling List</h4>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
                   <div class="box-body">
                     <table class="table table-bordered table-striped">
                 <thead>
-                <tr class="bg-yellow">
+                <tr class="bg-info">
                   <th></th>
                   <th>Title</th>
                   <th>Total Mail Id</th>
@@ -93,27 +109,31 @@
                 
               </table>
                   </div>
-                </div>
-
-                <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Server List</h3>
+                
+                <div class="box-footer with-border">
+                  <h4 class="box-title">Server List</h4>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
                   <div class="box-body">
                     <table class="table table-bordered table-striped">
                 <thead>
-                <tr class="bg-yellow">
+                <tr class="bg-info">
                   <th></th>
                   <th>Server Title</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($servers as $key=>$server)
+                @foreach(Auth::user()->servers as $key=>$server)
                 <tr>
-                  <td><input type="radio" name="servers" value="{{$server->id}}"></td>
-                  <td>{{$server->title}}</td>
+                  <td><input type="radio" name="servers" value="{{encrypt($server->id.'-smtp','server')}}"></td>
+                  <td>{{$server->title}} (SMTP Server)</td>
+                </tr>
+                @endforeach
+                 @foreach(Auth::user()->clients as $key=>$client)
+                <tr>
+                  <td><input type="radio" name="servers" value="{{encrypt($client->id.'-client','server')}}"></td>
+                  <td>{{$client->title}} (Client Server)</td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -121,14 +141,9 @@
               </table>
                   </div>
                 </div>
-                 <div class="form-group">
-                  <label for="exampleInputEmail1">From Email</label>
-                  <input type="text" name="from" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">From Name</label>
-                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter From">
-                </div>
+
+
+                 
               </div>
 
              

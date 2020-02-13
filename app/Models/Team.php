@@ -19,6 +19,16 @@ class Team extends Model
         return $this->belongsToMany('App\Models\Campaign','team_campaign');
     }
 
+    
+    public function servers(){
+        return $this->belongsToMany('App\Models\Server','team_server');
+    }
+
+    
+    public function clients(){
+        return $this->belongsToMany('App\Models\Client','team_client');
+    }
+
     public function listings(){
         return $this->belongsToMany('App\Models\Listing','team_listing');
     }

@@ -49,7 +49,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($campaigns as $key=>$campaign)
+                @foreach(Auth::user()->campaigns as $key=>$campaign)
                 <tr>
                   <td>{{$campaign->subject}}</td>
                   @if($campaign->templates != null)
