@@ -76,7 +76,37 @@ class CampaignController extends Controller
     	$campaign = Campaign::find(decrypt($id,'vipra')); //dd($campaign);
     	$servers = Server::server()->get();//dd($campaign);
         $listings = Listing::listing()->get();
-        return view('user.campaign.detail', compact('campaign','servers','listings'));
+        
+        foreach(Auth::user()->teams as $team){
+            $serve[] = $team->servers;
+           
+        }
+
+        foreach($serve as $srv){
+        $server_objects[] = $srv->filter(function($item) {
+                return $item;
+            })->first();
+        }
+        $server_objects[]= Auth::user()->servers->filter(function($item) {
+                return $item;
+            })->first();
+        $allowServer=(new \Illuminate\Database\Eloquent\Collection($server_objects))->unique();
+
+
+        foreach(Auth::user()->teams as $team){
+            $clnts[] = $team->clients;
+        }
+        foreach($clnts as $clnt){
+        $client_object[] = $clnt->filter(function($item) {
+                return $item;
+            })->first();
+        }
+        $client_object[]= Auth::user()->clients->filter(function($item) {
+                return $item;
+            })->first();
+        $allowClient=(new \Illuminate\Database\Eloquent\Collection($client_object))->unique();
+        
+        return view('user.campaign.detail', compact('campaign','servers','listings','allowClient','allowServer'));
     }
     public function campaignList(){ 
     	//$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);

@@ -124,13 +124,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach(Auth::user()->servers as $key=>$server)
+                @foreach($allowServer as $key=>$server)
                 <tr>
                   <td><input type="radio" name="servers" value="{{encrypt($server->id.'-smtp','server')}}"></td>
                   <td>{{$server->title}} (SMTP Server)</td>
                 </tr>
                 @endforeach
-                 @foreach(Auth::user()->clients as $key=>$client)
+                 @foreach($allowClient as $key=>$client)
                 <tr>
                   <td><input type="radio" name="servers" value="{{encrypt($client->id.'-client','server')}}"></td>
                   <td>{{$client->title}} (Client Server)</td>
