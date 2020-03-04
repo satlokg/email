@@ -35,7 +35,23 @@ class ServerController extends Controller
 
     public function smtpserverPost(Request $r)
     {
-        $server=Server::Create($r->all());
+         $dt=$r->all();
+         if(Auth::user()->admin_id != null){
+            $dt['user_id']=Auth::user()->admin_id;
+            $dt['created_by']=Auth::user()->id;
+         }else{
+            $dt['user_id']=Auth::user()->id;
+            $dt['created_by']=Auth::user()->id;
+         }
+          
+        $server=Server::Create($dt);
+        
+        if(Auth::user()->admin_id != null){
+                $ids[]=Auth::user()->admin_id;
+         }else{
+                $ids[]=Auth::user()->id;
+         }
+         $server->users()->sync($ids);
         if($server){
             $notification = array(
                         'message' => 'Server Aded', 
@@ -54,8 +70,20 @@ class ServerController extends Controller
     public function clintserverPost(Request $r)
     {
         $dt=$r->all();
-        $dt['user_id']=Auth::user()->id;
+         if(Auth::user()->admin_id != null){
+            $dt['user_id']=Auth::user()->admin_id;
+            $dt['created_by']=Auth::user()->id;
+         }else{
+            $dt['user_id']=Auth::user()->id;
+            $dt['created_by']=Auth::user()->id;
+         }
         $server=Client::Create($dt);
+        if(Auth::user()->admin_id != null){
+                $ids[]=Auth::user()->admin_id;
+         }else{
+                $ids[]=Auth::user()->id;
+         }
+         $server->users()->sync($ids);
         if($server){
             $notification = array(
                         'message' => 'Server Aded', 

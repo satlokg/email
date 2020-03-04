@@ -7,7 +7,7 @@ use Auth;
 class Client extends Model
 {
     protected $fillable=[
-		'title','server_key','secret','region','user_id','domain','driver'
+		'title','server_key','secret','region','user_id','domain','driver','created_by'
     ];
     public function scopeServer($query)
     {

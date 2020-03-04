@@ -37,10 +37,16 @@ class TeamController extends Controller
     	}else{
     		$team->user_id=Auth::user()->id;
     	}
+        $ids = $r->user;
+         if(Auth::user()->admin_id != null){
+                array_push($ids,Auth::user()->admin_id);
+         }else{
+                array_push($ids,Auth::user()->id);
+         }
     	$team->created_by=Auth::user()->id;
     	$team->teamname=$r->teamname;
     	$team->save();
-    	$team->users()->attach($r->user);
+    	$team->users()->sync($ids);
 
         if($team){
         	$notification = ['message'=>'Success','alert-type'=>'success'];

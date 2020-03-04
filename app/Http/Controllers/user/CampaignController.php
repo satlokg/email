@@ -52,11 +52,18 @@ class CampaignController extends Controller
          }else{
               $campaign->templates=$r->editor1;
          }
+         $ids = $r->user;
+         if(Auth::user()->admin_id != null){
+                array_push($ids,Auth::user()->admin_id);
+         }else{
+                array_push($ids,Auth::user()->id);
+         }
+         
        
         $campaign->subject= $r->subject;
         $campaign->user_id=Auth::user()->id;
         $campaign->save();
-        $campaign->users()->sync($r->user);
+        $campaign->users()->sync($ids);
         $campaign->teams()->sync($r->team);
         if($campaign){
             $notification = array(
@@ -76,37 +83,72 @@ class CampaignController extends Controller
     	$campaign = Campaign::find(decrypt($id,'vipra')); //dd($campaign);
     	$servers = Server::server()->get();//dd($campaign);
         $listings = Listing::listing()->get();
+
+///////////////mail list/////////////
+        foreach(Auth::user()->teams as $team){
+            $list[] = $team->listings;
+           
+        }
         
+        if(isset($list)){
+            foreach($list as $lst){
+            $listing_object[] = $lst->filter(function($item) {
+                    return $item;
+                })->first();
+            }
+        }
+
+            $listing_object[]= Auth::user()->listings->filter(function($item) {
+                    return $item;
+                })->first();
+            $listing_object = array_filter($listing_object);
+            if($listing_object){
+                $allowListing=(new \Illuminate\Database\Eloquent\Collection($listing_object))->unique();
+            }else{
+                $allowListing=[];
+            }
+            
+            //dd($allowListing);
+////////////smtp server list//////////        
         foreach(Auth::user()->teams as $team){
             $serve[] = $team->servers;
            
         }
-
-        foreach($serve as $srv){
-        $server_objects[] = $srv->filter(function($item) {
-                return $item;
-            })->first();
+        if(isset($serve)){
+            foreach($serve as $srv){
+            $server_objects[] = $srv->filter(function($item) {
+                    return $item;
+                })->first();
+            }
         }
-        $server_objects[]= Auth::user()->servers->filter(function($item) {
-                return $item;
-            })->first();
-        $allowServer=(new \Illuminate\Database\Eloquent\Collection($server_objects))->unique();
+            $server_objects[]= Auth::user()->servers->filter(function($item) {
+                    return $item;
+                })->first();
+            $server_objects = array_filter($server_objects);
+            $allowServer=(new \Illuminate\Database\Eloquent\Collection($server_objects))->unique();
+       
+        
 
-
+//////// Client server list//////////
         foreach(Auth::user()->teams as $team){
             $clnts[] = $team->clients;
         }
+        if(isset($clnts)){
         foreach($clnts as $clnt){
         $client_object[] = $clnt->filter(function($item) {
                 return $item;
             })->first();
         }
+    }
         $client_object[]= Auth::user()->clients->filter(function($item) {
                 return $item;
             })->first();
+        $client_object = array_filter($client_object);
         $allowClient=(new \Illuminate\Database\Eloquent\Collection($client_object))->unique();
+////////////////
         
-        return view('user.campaign.detail', compact('campaign','servers','listings','allowClient','allowServer'));
+        
+        return view('user.campaign.detail', compact('campaign','servers','listings','allowClient','allowServer','allowListing'));
     }
     public function campaignList(){ 
     	//$campaigns = Campaign::where('user_id', Auth::user()->id)->get(); //dd($campaigns);

@@ -65,7 +65,18 @@ class HomeController extends Controller
               $list->user_id=$user_id;
               $list->created_by=Auth::user()->id;
               $list->save();
-              $list->users()->sync($r->user);
+              if($r->user){
+                $ids = $r->user;
+              }else{
+                $ids=[];
+              }
+              
+               if(Auth::user()->admin_id != null){
+                      array_push($ids,Auth::user()->admin_id);
+               }else{
+                      array_push($ids,Auth::user()->id);
+               }
+              $list->users()->sync($ids);
               $list->teams()->sync($r->team);
               Excel::import(new EmailImport($list->id),request()->file('file'));
               Emaillist::whereNull('email')->delete();

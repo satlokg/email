@@ -98,7 +98,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($listings as $key=>$list)
+                @foreach($allowListing as $key=>$list)
                 <tr>
                   <td><input type="checkbox" name="mailList[]" value="{{$list->id}}"></td>
                   <td>{{$list->title}}</td>

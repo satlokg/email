@@ -8,7 +8,7 @@ use Auth;
 class Server extends Model
 {
     protected $fillable=[
-		'title','hostname','port','username','password','encryption','driver'
+		'title','hostname','port','username','password','encryption','driver','created_by','user_id'
     ];
 
     public function scopeServer($query)
